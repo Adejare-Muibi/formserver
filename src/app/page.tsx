@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Navbar from "@/components/landing-page/Navbar";
-import Hero from "@/components/landing-page/Hero"
+import React from 'react'
 
-export default function Home() {
+const page = () => {
   return (
-    <section>
-      <Hero/>
-    </section>
-  );
+    <div>
+      
+    </div>
+  )
 }
+
+export default page
