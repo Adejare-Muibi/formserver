@@ -57,7 +57,7 @@ const Navbar = () => {
                 <div className="flex p-5 gap-4 flex-col w-1/2">
                   <ResourcesProps
                     icon={
-                      <LuBookOpen className="bg-[#E5122E!important] p-2 text-4xl  text-white rounded" />
+                      <LuBookOpen className="bg-[#c02dc1!important] p-2 text-4xl  text-white rounded" />
                     }
                     text={"Library"}
                     style={"hover:bg-[#F9FAFB]"}
@@ -65,7 +65,7 @@ const Navbar = () => {
                   />
                   <ResourcesProps
                     icon={
-                      <LuBookOpen className="bg-[#E5122E!important] p-2 text-4xl  text-white rounded" />
+                      <LuBookOpen className="bg-[#c02dc1!important] p-2 text-4xl  text-white rounded" />
                     }
                     text={"Guide"}
                     style={"hover:bg-[#F9FAFB]"}
@@ -75,7 +75,7 @@ const Navbar = () => {
                 <div className="bg-[#F9FAFB] p-5 w-1/2">
                   <ResourcesProps
                     icon={
-                      <LuBookOpen className="bg-[#E5122E!important] p-2 text-4xl  text-white rounded" />
+                      <LuBookOpen className="bg-[#c02dc1!important] p-2 text-4xl  text-white rounded" />
                     }
                     text={"Changelog"}
                     style={"bg-[#F9FAFB] hover:bg-[white]"}
@@ -95,13 +95,13 @@ const Navbar = () => {
         <div className="w-[60%] gap-4 flex justify-end items-end">
           <Link
             href={"/register"}
-            className="px-4 py-2 bg-[#E5122E] text-white rounded-[5px]"
+            className="px-4 py-2 bg-[#c02dc1] text-white rounded-[5px]"
           >
             Get Started
           </Link>
           <Link
             href={"/login"}
-            className="px-4 py-2 bg-[#FECACA] rounded-[5px] text-[#E5122E]"
+            className="px-4 py-2 bg-[#FECACA] rounded-[5px] text-[#c02dc1]"
           >
             Sign In
           </Link>

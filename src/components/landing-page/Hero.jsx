@@ -34,7 +34,7 @@ const Hero = () => {
         </p>
         <Link
           href={"/register"}
-          className="px-7 py-4 bg-[#E5122E] text-white rounded-[5px]"
+          className="px-7 py-4 bg-[#c02dc1] text-white rounded-[5px]"
         >
           Get Started
         </Link>
