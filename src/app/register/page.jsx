@@ -48,7 +48,8 @@ const page = () => {
         toast.error(error)
       }
     } catch (error) {
-      toast.error("Internal server error")
+      console.log(error);
+      // toast.error("Internal server error")
     }
   };
   return (
