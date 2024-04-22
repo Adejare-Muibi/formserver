@@ -55,7 +55,7 @@ const page = () => {
     <div className="flex items-center justify-center w-full h-screen gap-[50px]">
       <div className="w-full max-w-[500px]">
         <h2></h2>
-        <h1 className="font-[800] text-3xl">Register for Formspree</h1>
+        <h1 className="font-[800] text-3xl">Register for FormServer</h1>
         <Link className="text-[#DC2626]" href={"/register"}></Link>
 
         <form className="w-full flex flex-col gap-2 mt-5">
@@ -114,7 +114,7 @@ const page = () => {
               <Link className="text-[#DC2626]" href={"/"}>
                 Help Site
               </Link>
-              ,{" "}
+              ,{""}
               <Link className="text-[#DC2626]" href={"/"}>
                 Terms of Use
               </Link>
@@ -127,7 +127,7 @@ const page = () => {
           <div className="flex items-center gap-1">
             <input type="checkbox" name="update" id="update" />
             <label htmlFor="update">
-              <h4>Please send me occasional Formspree news updates</h4>
+              <h4>Please send me occasional Formserver news updates</h4>
             </label>
           </div>
           <div className="flex flex-col ">
