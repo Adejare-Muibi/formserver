@@ -1,11 +1,10 @@
 import React from 'react'
 import Link from 'next/link';
-import Footer from "../../components/landing-page/Footer"
+
 
 
 const page = () => {
   return (
-    <>
     <div className='bg-[#e7c7e7] flex flex-col items-center gap-[40px] justify-center w-full pt-[100px] pb-[30px] overflow-hidden'>
         <div className='flex flex-col justify-center gap-[30px] items-center'>
             <div>
@@ -34,8 +33,6 @@ const page = () => {
             </div>
         </div>
     </div>
-    <Footer/>
-    </>
   )
 }
 
