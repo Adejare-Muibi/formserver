@@ -8,7 +8,7 @@ import Create from "@/components/landing-page/Create"
 import Comp from "@/components/landing-page/Comp"
 import Footer from "@/components/landing-page/Footer"
 
-export default function Home() {
+const page = () => {
   return (
     <section>
       <Hero/>
@@ -21,3 +21,5 @@ export default function Home() {
     </section>
   );
 }
+
+export default page

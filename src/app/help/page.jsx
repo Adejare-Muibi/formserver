@@ -17,7 +17,7 @@ const page = () => {
             <form action="" className='flex flex-col bg-transparent gap-[30px]'>
                 <div className='flex flex-col gap-[20px]'>
                     <div className='flex gap-[13px]'>
-                        <input className='w-[29.5vw] pl-[10.5px] outline-[#CB6CE7] py-[6px] rounded-[5px] max-md:w-[45vw]' type="text" placeholder='Full Name' />
+                        <input className='w-[29.5vw] pl-[10.5px] outline-[#CB6CE7] py-[6px] rounded-[5px] max-md:w-[45vw]' type="text" name='Full_Name' id='Full_Name' placeholder='Full Name' />
                         <input className='w-[29.5vw] pl-[10.5px] outline-[#CB6CE7] py-[6px] rounded-[5px] max-md:w-[45vw]' type="text" placeholder='Email Address' />
                     </div>
                     <div className='flex gap-[13px]'>
