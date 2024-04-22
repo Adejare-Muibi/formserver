@@ -1,23 +1,25 @@
 'use client';
-import {usePathname} from 'next/navigation';
-import React from 'react';
+import {usePathname, useRouter} from 'next/navigation';
+import React, {useContext, useState} from 'react';
 import Navbar from '../components/landing-page/Navbar';
 import DashboardNavbar from '../components/DashboardNavbar';
 import {ToastContainer} from 'react-toastify';
+import {AppContext} from '@/context/AppContext';
 
-const AppWrapper = ({children}) => {
+const AppWrapper = ({children, isLoading}) => {
 	const pathname = usePathname();
+	const {isLoggedIn} = useContext(AppContext);
 
-	const isLoggedIn = true;
 	return (
 		<section>
-			{isLoggedIn ? (
-				<DashboardNavbar />
-			) : pathname === '/login' || pathname === '/register' ? (
-				''
-			) : (
-				<Navbar />
-			)}
+			{!isLoading &&
+				(isLoggedIn ? (
+					<DashboardNavbar />
+				) : pathname === '/login' || pathname === '/register' ? (
+					''
+				) : (
+					<Navbar />
+				))}
 			<div>{children}</div>
 			<ToastContainer />
 		</section>

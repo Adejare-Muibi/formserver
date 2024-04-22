@@ -1,11 +1,14 @@
 'use client';
 import Link from 'next/link';
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import FormsTable from '../../components/FormsTable';
 import {getDashboard} from '../../utils/apiCalls';
+import {toast} from 'react-toastify';
+import {useRouter} from 'next/navigation';
+import {AppContext} from '@/context/AppContext';
 
 const Dashboard = () => {
-	const user = {first_name: 'John'};
+	const {user} = useContext(AppContext);
 	const isVerified = false;
 
 	const forms = [
@@ -17,16 +20,6 @@ const Dashboard = () => {
 		},
 	];
 
-	const getDashboardData = async () => {
-		try {
-			const response = await getDashboard();
-			console.log(response);
-		} catch (error) {}
-	};
-
-	useEffect(() => {
-		getDashboardData();
-	}, []);
 	return (
 		<>
 			{!isVerified && (
@@ -37,7 +30,7 @@ const Dashboard = () => {
 			<main className="max-w-7xl m-auto">
 				<div className="py-10 px-5">
 					<h2 className="font-bold text-2xl">
-						Hello {user.first_name}, Welcome to FormServer
+						Hello {user?.firstname}, Welcome to FormServer
 					</h2>
 
 					{forms.length ? (

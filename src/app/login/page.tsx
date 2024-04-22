@@ -1,10 +1,15 @@
 'use client';
+import {AppContext} from '@/context/AppContext';
 import {loginUser} from '@/utils/apiCalls';
 import Link from 'next/link';
-import React, {useState} from 'react';
+import {useRouter} from 'next/navigation';
+import React, {useContext, useState} from 'react';
 import {toast} from 'react-toastify';
 
 const Login = () => {
+	const router = useRouter();
+	const {setIsLoggedIn} = useContext(AppContext);
+
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -18,8 +23,23 @@ const Login = () => {
 			if (!formData.email || !formData.password)
 				throw new Error('Please provide your username and password');
 			const response = await loginUser(formData);
+			const {status, data} = response;
+
+			console.log(response.data);
 			if (response.status >= 400) throw new Error(response.message);
-			toast.error(response.message);
+			if (status === 200) {
+				const {token, isVerified} = data.data;
+				localStorage.setItem('_tkn', token);
+				isVerified
+					? toast.success('Logged in successfully')
+					: toast.success(
+							'Logged in successfully, verify your email to create your first form'
+					  );
+				setIsLoggedIn(true);
+				router.push('/dashboard');
+			} else {
+				toast.success(response.message);
+			}
 		} catch (error: any) {
 			toast.error(error.message);
 		}
@@ -39,7 +59,7 @@ const Login = () => {
 					<div className="mb-4 relative">
 						<label htmlFor="">Email Address</label>
 						<input
-							type="text"
+							type="email"
 							className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
 							onChange={event => {
 								console.log();
