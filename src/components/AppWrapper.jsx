@@ -1,18 +1,25 @@
-"use client";
-import { usePathname } from 'next/navigation'
+'use client';
+import {usePathname} from 'next/navigation';
 import React from 'react';
-import Navbar from "../components/landing-page/Navbar"
+import Navbar from '../components/landing-page/Navbar';
+import DashboardNavbar from '../components/DashboardNavbar';
 
-const AppWrapper = ({ children }) => {
-    const pathname = usePathname();
-    return (
-        <section>
-            {
-                pathname === "/login" || pathname === "/register" ? "" : <Navbar />
-            }
-            <div>{children}</div>
-        </section>
-    )
-}
+const AppWrapper = ({children}) => {
+	const pathname = usePathname();
 
-export default AppWrapper
+	const isLoggedIn = true;
+	return (
+		<section>
+			{isLoggedIn ? (
+				<DashboardNavbar />
+			) : pathname === '/login' || pathname === '/register' ? (
+				''
+			) : (
+				<Navbar />
+			)}
+			<div>{children}</div>
+		</section>
+	);
+};
+
+export default AppWrapper;
