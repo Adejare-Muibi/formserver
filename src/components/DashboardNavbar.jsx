@@ -42,7 +42,7 @@ const DashboardNavbar = () => {
 		<section className="shadow-md">
 			{showMobileNav && (
 				<div
-					className="fixed bg-[rgba(0,0,0,0.7)] top-0 right-0 bottom-0 left-0"
+					className="fixed bg-[rgba(0,0,0,0.7)] top-0 right-0 bottom-0 left-0 z-10"
 					onClick={() => setShowMobileNav(false)}
 				></div>
 			)}
@@ -56,7 +56,7 @@ const DashboardNavbar = () => {
 				<ul
 					className={`flex flex-col md:flex-row top-0 ${
 						showMobileNav ? 'right-0' : '-right-full'
-					} w-[60%] pl-5 md:pl-0 pt-[50%] md:pt-0 bg-[#e5122e] md:bg-transparent gap-8 fixed h-full md:static z-10 transition-all md:transition-none duration-500`}
+					} w-[60%] pl-5 md:pl-0 pt-[50%] md:pt-0 bg-[#c02dc1] md:bg-transparent gap-8 fixed h-full md:static z-20 transition-all md:transition-none duration-500`}
 				>
 					<i
 						className="fas fa-xmark fa-2x text-white md:hidden absolute right-10 top-10"

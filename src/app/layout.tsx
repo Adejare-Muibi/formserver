@@ -3,6 +3,8 @@ import {Inter} from 'next/font/google';
 import './globals.css';
 import './styles/fontawesome-free-6.1.1-web/css/all.css';
 import AppWrapper from '../components/AppWrapper';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({subsets: ['latin']});
 

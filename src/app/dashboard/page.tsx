@@ -1,6 +1,8 @@
+'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, {useEffect} from 'react';
 import FormsTable from '../../components/FormsTable';
+import {getDashboard} from '../../utils/apiCalls';
 
 const Dashboard = () => {
 	const user = {first_name: 'John'};
@@ -14,6 +16,17 @@ const Dashboard = () => {
 			project_name: 'First submission',
 		},
 	];
+
+	const getDashboardData = async () => {
+		try {
+			const response = await getDashboard();
+			console.log(response);
+		} catch (error) {}
+	};
+
+	useEffect(() => {
+		getDashboardData();
+	}, []);
 	return (
 		<>
 			{!isVerified && (
