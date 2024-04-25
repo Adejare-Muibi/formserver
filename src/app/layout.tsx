@@ -5,6 +5,7 @@ import './styles/fontawesome-free-6.1.1-web/css/all.css';
 import AppWrapper from '../components/AppWrapper';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {AppContextProvider} from '@/context/AppContext';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<AppWrapper>{children}</AppWrapper>
+				<AppContextProvider>{children}</AppContextProvider>
 			</body>
 		</html>
 	);

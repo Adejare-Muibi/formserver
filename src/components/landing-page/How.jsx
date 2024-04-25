@@ -7,7 +7,7 @@ import { FaShareAlt } from "react-icons/fa";
 
 const How = () => {
   return (
-    <div className='py-[100px] flex items-center w-full justify-around max-md:justify-center max-md:flex-col'>
+    <div className='py-[20px] flex items-center w-full justify-around max-md:justify-center max-md:flex-col'>
         <div>
             <Image className='w-[] max-md:hidden rounded-[15px]' src={"/front.avif"} height={60} width={400} />
         </div>
