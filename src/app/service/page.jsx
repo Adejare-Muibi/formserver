@@ -45,7 +45,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -56,7 +56,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -67,7 +67,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -78,7 +78,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -89,7 +89,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -100,7 +100,7 @@ const page = () => {
             <div className="bg-[#FFC7FB] border py-4">
               <h2 className="text-center">Web Solutions</h2>
             </div>
-            <div className="bg-[#FFFFFF] p-3 text-sm ">
+            <div className="bg-[#FFFFFF] p-[35px] text-sm ">
               <p className="text-center">
                 Crafting effective websites that are responsive and
                 user-friendly to showcase your business.
@@ -108,6 +108,36 @@ const page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex  mx-auto px-[130px] flex-col items-center">
+        <h1>LET'S TALK ABOUT YOUR PROJECT</h1>
+        <p>
+          We are passionate about discussing software development! Please fill
+          out the form below or reach out to us via email at hello@formsubmit.co
+          to connect with one of our knowledgeable consultants who can cater to
+          your unique software development needs.
+        </p>
+        <form className="w-full flex flex-col  gap-2 mt-5">
+          <div className="flex py-2
+           gap-[20px] w-full">
+            <input type="text" className="w-1/2" placeholder="Your Name" id="" />
+            <input type="email" className="w-1/2 p-2" placeholder="Your email address" id="" />
+          </div>
+          <div>
+            <textarea
+            placeholder="How can we help"
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              className="w-full"
+            ></textarea>
+          </div>
+          {/* <div className="bg-black"> */}
+            <button className="text-white bg-black">Jump-start your project</button>
+          {/* </div> */}
+        </form>
       </div>
     </div>
   );
