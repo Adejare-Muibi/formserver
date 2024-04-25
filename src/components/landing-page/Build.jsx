@@ -9,7 +9,7 @@ import { FaWpforms } from "react-icons/fa6";
 
 const Build = () => {
   return (
-    <div className="build justify-center flex flex-col py-[50px] gap-[180px]">
+    <div className="build justify-center flex flex-col py-[50px] max-md:py-[0] gap-[30px]">
       <div className="flex justify-center flex-col gap-[60px] items-center">
         <div>
           <h2 className='text-[#0E232D] text-[40px] font-bold max-md:text-[30px] max-md:text-center max-md:w-[70vw]'>Build forms your way</h2>
@@ -62,7 +62,7 @@ const Build = () => {
           </div>
         </div>
       </div>
-      <div className='flex items-center justify-center bg-[#0E232D] gap-[10%] mx-[60px] py-[58px] max-md:gap-[30px] max-md:flex-col-reverse max-md:py-[25px] max-md:mx-[0px] px-[65px] rounded-[30px] max-md:justify-center max-md:w-full max-md:rounded-[0px]'>
+      <div className='flex items-center justify-center bg-[#0E232D] gap-[10%] mx-[60px] py-[58px] max-md:gap-[30px] max-md:flex-col-reverse max-md:py-[25px] max-md:mx-[0px] px-[25px] rounded-[30px] max-md:justify-center max-md:w-full max-md:rounded-[0px]'>
         <div className='flex justify-around w-full max-md:justify-center'>
           <div className='flex flex-col gap-[40px]'>
             <Image className='' src={"/pga.webp"} height={120} width={150} alt="pga" priority/>
@@ -83,8 +83,8 @@ const Build = () => {
             <Image className='' src={"/ibm.webp"} height={120} width={150} alt="adobe" priority/>
           </div>
         </div>
-        <div className='text-[white] text-[33px] font-bold max-md:text-[30px] max-md:text-center'>
-          <h1 className='max-md:w-[60vw]'>Trusted by 500,000+ freelancers, agencies, and Fortune 500 companies</h1>
+        <div className='text-[white] text-[33px] font-bold max-md:text-[25px] max-md:text-center'>
+          <h1 className=''>Trusted by 500,000+ freelancers, agencies, and Fortune 500 companies</h1>
         </div>
 
       </div>

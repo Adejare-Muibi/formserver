@@ -38,7 +38,7 @@ const Survey = () => {
           <label className='text-[15px] text-[grey] ' htmlFor="">2.The quality of the work was high in quality.</label>
           <textarea className='border-solid border-2 lg:w-[45vw]  p-3' name="" id="" cols="30" rows="10"></textarea>
 
-          <div className='border-solid text-[grey]  border-2 lg:w-[15vw] p-3'><button>Send Respondses</button></div>
+          <div className='border-solid text-[grey]  border-2 lg:w-[15vw] p-3'><button>Send Responses</button></div>
         </form> 
  </div>
   )

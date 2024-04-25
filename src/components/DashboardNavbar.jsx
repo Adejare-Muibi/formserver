@@ -1,8 +1,13 @@
+import {AppContext} from '@/context/AppContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {useState} from 'react';
+import {usePathname, useRouter} from 'next/navigation';
+import React, {useContext, useEffect, useState} from 'react';
 
 const DashboardNavbar = () => {
+	const pathname = usePathname();
+	const router = useRouter();
+	const {setIsLoggedIn, user} = useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 	const navLinks = [
 		{
@@ -25,69 +30,101 @@ const DashboardNavbar = () => {
 			],
 		},
 		{
-			label: 'Profile',
-			url: 'profile',
-			isDropdown: false,
-		},
-		{
 			label: 'Settings',
 			url: 'settings',
 			isDropdown: false,
 		},
 	];
 
-	const first_name = 'John';
-	const last_name = 'Doe';
-	return (
-		<section className="shadow-md">
-			{showMobileNav && (
-				<div
-					className="fixed bg-[rgba(0,0,0,0.7)] top-0 right-0 bottom-0 left-0 z-10"
-					onClick={() => setShowMobileNav(false)}
-				></div>
-			)}
-			<nav className="flex justify-between py-10 px-5 max-w-7xl m-auto">
-				<div className="">
-					<Image src={'/next.svg'} height={80} width={80} alt="logo" priority />
-				</div>
-				<span className="md:hidden" onClick={() => setShowMobileNav(true)}>
-					<i className="fas fa-bars-staggered fa-2x"></i>
-				</span>
-				<ul
-					className={`flex flex-col md:flex-row top-0 ${
-						showMobileNav ? 'right-0' : '-right-full'
-					} w-[60%] pl-5 md:pl-0 pt-[50%] md:pt-0 bg-[#c02dc1] md:bg-transparent gap-8 fixed h-full md:static z-20 transition-all md:transition-none duration-500`}
-				>
-					<i
-						className="fas fa-xmark fa-2x text-white md:hidden absolute right-10 top-10"
-						onClick={() => setShowMobileNav(false)}
-					></i>
-					{navLinks.map(navLink => (
-						<NavLink key={navLink.label} navLink={navLink} />
-					))}
+	const first_name = user?.first_name;
+	const last_name = user?.last_name;
+	const isVerified = user.isVerified;
 
-					<div className="md:ml-auto mt-5 md:mt-0 text-white md:text-black">
-						<span className="text-xl flex flex-col md:flex-row gap-5">
-							<span className="mr-5 cursor-pointer">
-								<i className="fas fa-user mr-2"></i>
-								{`${first_name} ${last_name}`}
-							</span>
-							<span>
-								<i className="fa-solid fa-right-from-bracket cursor-pointer mr-2"></i>
-								<span className="md:hidden">Logout</span>
-							</span>
-						</span>
+	useEffect(() => {
+		setShowMobileNav(false);
+	}, [pathname]);
+
+	const handleLogout = () => {
+		router.push('/login');
+		localStorage.removeItem('_tkn');
+		setIsLoggedIn(false);
+	};
+
+	return (
+		<>
+			<section className="shadow-md">
+				{showMobileNav && (
+					<div
+						className="fixed bg-[rgba(0,0,0,0.7)] top-0 right-0 bottom-0 left-0 z-10"
+						onClick={() => setShowMobileNav(false)}
+					></div>
+				)}
+				<nav className="flex justify-between py-10 px-5 max-w-7xl m-auto">
+					<div className="">
+						<Image
+							src={'/formserver.jpg'}
+							height={80}
+							width={80}
+							alt="logo"
+							priority
+						/>
 					</div>
-				</ul>
-			</nav>
-		</section>
+					<span className="lg:hidden" onClick={() => setShowMobileNav(true)}>
+						<i className="fas fa-bars-staggered fa-2x"></i>
+					</span>
+					<ul
+						className={`flex flex-col lg:flex-row top-0 ${
+							showMobileNav ? 'right-0' : '-right-full'
+						} w-[60%] pl-5 lg:pl-0 pt-[50%] lg:pt-0 bg-[#c02dc1] lg:bg-transparent gap-8 fixed h-full lg:static z-20 transition-all lg:transition-none duration-500`}
+					>
+						<span className="lg:hidden">
+							<i
+								className="fa-solid fa-xmark fa-2x text-white absolute right-10 top-10"
+								onClick={() => setShowMobileNav(false)}
+							></i>
+						</span>
+						{navLinks.map(navLink => (
+							<NavLink key={navLink.label} navLink={navLink} />
+						))}
+
+						<div className="lg:ml-auto mt-5 lg:mt-0 text-white lg:text-black">
+							<span className="text-xl flex flex-col lg:flex-row gap-y-8 lg:gap-x-5 text-nowrap">
+								<span
+									className="mr-5 cursor-pointer"
+									onClick={() => router.push('/profile')}
+								>
+									<i className="fas fa-user mr-2"></i>
+									{`${first_name} ${last_name}`}
+								</span>
+								<span onClick={handleLogout}>
+									<i className="fa-solid fa-right-from-bracket cursor-pointer mr-2"></i>
+									<span className="lg:hidden">Logout</span>
+								</span>
+							</span>
+						</div>
+					</ul>
+				</nav>
+			</section>
+
+			{!isVerified && (
+				<span className="text-center inline-block w-full px-5 py-2 bg-red-500 text-white cursor-text">
+					You need to verify your email to create a form, verify now
+				</span>
+			)}
+		</>
 	);
 };
 
 export default DashboardNavbar;
 
 const NavLink = ({navLink}) => {
+	const pathname = usePathname();
 	const [isExpanded, setIsExpanded] = useState(false);
+
+	useEffect(() => {
+		setIsExpanded(false);
+	}, [pathname]);
+
 	const handleExpand = () => {
 		setIsExpanded(true);
 	};
@@ -97,22 +134,22 @@ const NavLink = ({navLink}) => {
 	};
 
 	return (
-		<li>
+		<li className="text-nowrap">
 			{navLink.isDropdown ? (
 				isExpanded ? (
 					<>
 						<span
-							className="cursor-pointer text-white md:text-black text-lg"
+							className="cursor-pointer text-white lg:text-black text-lg"
 							onClick={handleClose}
 						>
 							{navLink.label} <i className="fas fa-chevron-up"></i>
 						</span>
-						<ul className="ml-5 md:-ml-5 mt-3 md:mt-8  flex flex-col gap-y-3 md:absolute md:bg-white md:px-10 md:py-2 md:shadow-md">
+						<ul className="ml-5 lg:-ml-5 mt-3 lg:mt-8  flex flex-col gap-y-3 lg:absolute lg:bg-white lg:px-10 lg:py-2 lg:shadow-md">
 							{navLink.dropdown.map(drop => (
 								<li key={drop.label}>
 									<Link
 										href={drop.url}
-										className="text-white md:text-black text-lg"
+										className="text-white lg:text-black text-lg"
 									>
 										{drop.label}
 									</Link>
@@ -122,14 +159,14 @@ const NavLink = ({navLink}) => {
 					</>
 				) : (
 					<span
-						className="cursor-pointer text-white md:text-black text-lg"
+						className="cursor-pointer text-white lg:text-black text-lg"
 						onClick={handleExpand}
 					>
 						{navLink.label} <i className="fas fa-chevron-down"></i>
 					</span>
 				)
 			) : (
-				<Link href={navLink.url} className="text-white md:text-black text-lg">
+				<Link href={navLink.url} className="text-white lg:text-black text-lg">
 					{navLink.label}
 				</Link>
 			)}

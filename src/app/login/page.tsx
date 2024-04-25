@@ -1,6 +1,6 @@
 'use client';
 import {AppContext} from '@/context/AppContext';
-import {loginUser} from '@/utils/apiCalls';
+import {getDashboard, loginUser} from '@/utils/apiCalls';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import React, {useContext, useState} from 'react';
@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 
 const Login = () => {
 	const router = useRouter();
-	const {setIsLoggedIn} = useContext(AppContext);
+	const {setIsLoggedIn, setUser} = useContext(AppContext);
 
 	const [formData, setFormData] = useState({
 		email: '',
@@ -23,10 +23,9 @@ const Login = () => {
 			if (!formData.email || !formData.password)
 				throw new Error('Please provide your username and password');
 			const response = await loginUser(formData);
-			const {status, data} = response;
+			const {status, data, message} = response;
 
-			console.log(response.data);
-			if (response.status >= 400) throw new Error(response.message);
+			if (status >= 400) throw new Error(message);
 			if (status === 200) {
 				const {token, isVerified} = data.data;
 				localStorage.setItem('_tkn', token);
@@ -36,7 +35,25 @@ const Login = () => {
 							'Logged in successfully, verify your email to create your first form'
 					  );
 				setIsLoggedIn(true);
-				router.push('/dashboard');
+				const getUserState = async () => {
+					try {
+						const response = await getDashboard();
+						const {status, data, message} = response;
+						if (status === 200) {
+							setIsLoggedIn(true);
+							setUser(data.user);
+						} else {
+							throw new Error(message);
+						}
+					} catch (error: any) {
+						toast(error.message);
+						setIsLoggedIn(false);
+						router.replace('/login');
+					}
+				};
+				getUserState()
+					.then(() => router.push('/dashboard'))
+					.catch(err => toast.error(err.message));
 			} else {
 				toast.success(response.message);
 			}

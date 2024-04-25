@@ -1,11 +1,5 @@
 import React, {FC} from 'react';
 
-interface Form {
-	_id: number;
-	name: string;
-	email: string;
-	project_name: string;
-}
 const FormsTable: FC<{forms: Form[]}> = ({forms}) => {
 	const tableHeaders = ['Name', 'Email', 'Project Name'];
 
@@ -26,13 +20,13 @@ const FormsTable: FC<{forms: Form[]}> = ({forms}) => {
 				</tr>
 			</thead>
 			<tbody>
-				{forms.map((form, index) => (
-					<tr key={form._id}>
+				{forms.map(form => (
+					<tr key={form._id} className="border-b-2">
 						<td className="w-1/3 py-5 px-5 border-r-2 text-center">
-							{form.name}
+							{form.form_name}
 						</td>
 						<td className="w-1/3 py-5 px-5 border-r-2 text-center">
-							{form.email}
+							{form.form_email}
 						</td>
 						<td className="w-1/3 py-5 px-5 border-r-2 text-center">
 							{form.project_name}

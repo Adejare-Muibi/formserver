@@ -1,6 +1,6 @@
 'use client';
-import {usePathname, useRouter} from 'next/navigation';
-import React, {useContext, useState} from 'react';
+import {usePathname} from 'next/navigation';
+import React, {useContext} from 'react';
 import Navbar from '../components/landing-page/Navbar';
 import DashboardNavbar from '../components/DashboardNavbar';
 import {ToastContainer} from 'react-toastify';
