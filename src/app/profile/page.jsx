@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='sectf flex gap-8 text-xl flex-col mt-[50px] justify-center items-center mb-9'>
+    <div className='sectf flex gap-8 text-xl max-sm:px-6 flex-col mt-[50px] justify-center items-center mb-9'>
         <h1 className='text-2xl font-bold'>User Profile</h1>
         <div className='flex flex-col gap-5'>
             <div className='flex flex-col gap-2'>
