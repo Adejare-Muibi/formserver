@@ -5,6 +5,7 @@ import Navbar from '../components/landing-page/Navbar';
 import DashboardNavbar from '../components/DashboardNavbar';
 import {ToastContainer} from 'react-toastify';
 import {AppContext} from '@/context/AppContext';
+import Footer from './landing-page/Footer';
 
 const AppWrapper = ({children, isLoading}) => {
 	const pathname = usePathname();
@@ -21,6 +22,7 @@ const AppWrapper = ({children, isLoading}) => {
 					<Navbar />
 				))}
 			<div>{children}</div>
+			{(pathname === '/login' || pathname === '/register') && <Footer />}
 			<ToastContainer />
 		</section>
 	);
