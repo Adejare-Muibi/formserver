@@ -6,6 +6,7 @@ export interface AppContextProps {
 	isLoggedIn: boolean;
 	setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
 	forms: Form[];
+	setForms: Dispatch<SetStateAction<Form[]>>;
 	reload: boolean;
 	setReload: Dispatch<SetStateAction<boolean>>;
 }

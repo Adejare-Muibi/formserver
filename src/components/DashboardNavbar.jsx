@@ -9,29 +9,31 @@ const DashboardNavbar = () => {
 	const router = useRouter();
 	const {setIsLoggedIn, user} = useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
+
 	const navLinks = [
 		{
 			label: 'Dashboard',
-			url: 'dashboard',
+			url: '/dashboard',
 			isDropdown: false,
 		},
 		{
-			label: 'Forms',
+			label: 'Form',
+			url: 'form',
 			isDropdown: true,
 			dropdown: [
 				{
 					label: 'Create',
-					url: 'create',
+					url: '/form/create',
 				},
 				{
 					label: 'Manage',
-					url: 'manage',
+					url: '/form/manage',
 				},
 			],
 		},
 		{
 			label: 'Settings',
-			url: 'settings',
+			url: '/settings',
 			isDropdown: false,
 		},
 	];
@@ -138,8 +140,13 @@ const NavLink = ({navLink}) => {
 			{navLink.isDropdown ? (
 				isExpanded ? (
 					<>
+						{console.log(pathname.split('/')[1], navLink.url)}
 						<span
-							className="cursor-pointer text-white lg:text-black text-lg"
+							className={`${
+								pathname.split('/')[1] === navLink.url
+									? 'lg:text-[#c02dc1] font-bold'
+									: 'lg:text-black'
+							} cursor-pointer text-lg`}
 							onClick={handleClose}
 						>
 							{navLink.label} <i className="fas fa-chevron-up"></i>
@@ -149,7 +156,11 @@ const NavLink = ({navLink}) => {
 								<li key={drop.label}>
 									<Link
 										href={drop.url}
-										className="text-white lg:text-black text-lg"
+										className={`${
+											pathname === drop.url
+												? 'lg:text-[#c02dc1] font-bold'
+												: 'lg:text-black'
+										} text-lg`}
 									>
 										{drop.label}
 									</Link>
@@ -159,14 +170,25 @@ const NavLink = ({navLink}) => {
 					</>
 				) : (
 					<span
-						className="cursor-pointer text-white lg:text-black text-lg"
+						className={`cursor-pointer ${
+							pathname.split('/')[1] === navLink.url
+								? 'lg:text-[#c02dc1] font-bold'
+								: 'lg:text-black'
+						} lg:text-black text-lg`}
 						onClick={handleExpand}
 					>
 						{navLink.label} <i className="fas fa-chevron-down"></i>
 					</span>
 				)
 			) : (
-				<Link href={navLink.url} className="text-white lg:text-black text-lg">
+				<Link
+					href={navLink.url}
+					className={`${
+						pathname === navLink.url
+							? 'lg:text-[#c02dc1] font-bold'
+							: 'lg:text-black'
+					} text-white text-lg`}
+				>
 					{navLink.label}
 				</Link>
 			)}

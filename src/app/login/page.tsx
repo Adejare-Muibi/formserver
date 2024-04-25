@@ -8,7 +8,7 @@ import {toast} from 'react-toastify';
 
 const Login = () => {
 	const router = useRouter();
-	const {setIsLoggedIn, setUser} = useContext(AppContext);
+	const {setIsLoggedIn, setUser, setForms} = useContext(AppContext);
 
 	const [formData, setFormData] = useState({
 		email: '',
@@ -42,6 +42,7 @@ const Login = () => {
 						if (status === 200) {
 							setIsLoggedIn(true);
 							setUser(data.user);
+							setForms(data.forms);
 						} else {
 							throw new Error(message);
 						}

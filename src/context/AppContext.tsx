@@ -17,7 +17,6 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 		'/profile',
 		'/settings',
 		'/create',
-		8,
 	];
 	const [isLoading, setIsLoading] = useState(
 		authenticatedRoutes.includes(pathname)
@@ -38,7 +37,6 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 			try {
 				const response = await getDashboard();
 				const {status, data, message} = response;
-
 				if (status === 200) {
 					setIsLoggedIn(true);
 					setUser(data.user);
@@ -74,6 +72,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				isLoggedIn,
 				setIsLoggedIn,
 				forms,
+				setForms,
 				reload,
 				setReload,
 			}}
