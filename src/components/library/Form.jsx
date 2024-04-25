@@ -53,7 +53,7 @@ const Form = () => {
 
   return (
     <div className='flex flex-col items-center justify-center p-5'>
-        <h2 className='text-[25px] text-[#0E232D] font-bold text-center  items-center'>GET THE CODE</h2>
+        <h2 className='text-[19px] text-[#0E232D] font-bold text-center  items-center'>GET THE CODE</h2>
         <div>
 
         <div className="flex flex-col max-sm:w-[90vw] w-[50vw] relative overflow-x-hidden items-center gap-4">

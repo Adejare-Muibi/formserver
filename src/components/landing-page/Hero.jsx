@@ -6,7 +6,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Hero = () => {
   const [isCopy, setIsCopy] = useState(false);
-  const codeString = `<form action="https://formspree.io/f/{form_id}" method="post">
+  const codeString = `<form action="https://formserver.io/f/{form_id}" method="post">
     < label for= "email" > Your Email</label >
       <input name="Email" id="email" type="email">
         <button type="submit">Submit</button>
@@ -23,12 +23,12 @@ const Hero = () => {
   
 
   return (
-    <div className="flex flex-col justify-center items-center py-20 gap-12">
+    <div className="flex w-full flex-col justify-center items-center py-10 gap-12 max-md:sticky">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="text-[50px] font-bold max-md:text-center max-md:text-[42px] max-md:w-[80vw]">
+        <h1 className="text-[50px] font-bold max-md:text-center max-md:text-[39px] max-md:w-[80vw]">
           Easy Form Endpoints for any developer
         </h1>
-        <p className="text-center text-[20px] w-[60vw]">
+        <p className="text-center text-[20px] max-md:w-[80vw] w-[60vw]">
           Connect your Form to our form Endpoints and we we'll email you the submissions. No PHP, Javascript or any backend code required.
         </p>
         <Link
@@ -38,9 +38,9 @@ const Hero = () => {
           Get Started
         </Link>
       </div>
-      <div className="flex flex-col relative items-center gap-4">
+      <div className="flex max-md:w-[90%] flex-col relative items-center gap-4">
           <SyntaxHighlighter
-          customStyle={{ padding: "40px", borderRadius: "20px"}}
+          customStyle={{ padding: "40px", borderRadius: "20px", width:"100%"}}
           language="javascript"
           style={vscDarkPlus}
         >
