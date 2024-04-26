@@ -4,8 +4,9 @@ import {usePathname, useRouter} from 'next/navigation';
 import AppWrapper from '@/components/AppWrapper';
 import {getDashboard} from '@/utils/apiCalls';
 import {toast} from 'react-toastify';
-import {AppContextProps, AppContextProviderProps} from './AppContext.types';
+import LoadingModal from '../components/LoadingModal.jsx';
 
+import {AppContextProps, AppContextProviderProps} from './AppContext.types';
 export const AppContext = createContext<AppContextProps>({} as AppContextProps);
 
 // export const useAuthContext = (): AppContextProps => useContext(AppContext);
@@ -75,16 +76,12 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				setForms,
 				reload,
 				setReload,
+				isLoading,
+				setIsLoading,
 			}}
 		>
 			<AppWrapper isLoading={isLoading}>
-				{isLoading ? (
-					<p className="h-screen flex justify-center items-center">
-						Loading...
-					</p>
-				) : (
-					children
-				)}
+				{isLoading ? <LoadingModal /> : children}
 			</AppWrapper>
 		</AppContext.Provider>
 	);

@@ -9,6 +9,8 @@ export interface AppContextProps {
 	setForms: Dispatch<SetStateAction<Form[]>>;
 	reload: boolean;
 	setReload: Dispatch<SetStateAction<boolean>>;
+	isLoading: boolean;
+	setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface AppContextProviderProps {

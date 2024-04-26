@@ -7,7 +7,7 @@ import React, {useContext, useEffect, useState} from 'react';
 const DashboardNavbar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
-	const {setIsLoggedIn, user} = useContext(AppContext);
+	const {setIsLoggedIn, setIsLoading, user} = useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
 	const navLinks = [
@@ -47,9 +47,12 @@ const DashboardNavbar = () => {
 	}, [pathname]);
 
 	const handleLogout = () => {
+		setIsLoading(true);
+
 		router.push('/login');
 		localStorage.removeItem('_tkn');
 		setIsLoggedIn(false);
+		setIsLoading(false);
 	};
 
 	return (

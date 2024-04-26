@@ -1,27 +1,21 @@
 'use client';
+import {AppContext} from '@/context/AppContext';
 import {registerUser} from '@/utils/apiCalls';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {IoMdCheckmark} from 'react-icons/io';
 import {toast} from 'react-toastify';
 
 const Register = () => {
 	const router = useRouter();
+	const {setIsLoading} = useContext(AppContext);
 	const [formData, setFormData] = useState({
 		first_name: '',
 		last_name: '',
 		email: '',
 		password: '',
 	});
-	const [isValidated, setisValidated] = useState({
-		first_name: false,
-		last_name: false,
-		email: false,
-		password: false,
-	});
-	const [loading, setLoading] = useState(false);
-	const [messageStatus, setMessageStatus] = useState('');
 	const handleInputChange = (e: any) => {
 		const {value, name} = e.target;
 
@@ -33,6 +27,7 @@ const Register = () => {
 
 	const handleSubmit = async () => {
 		try {
+			setIsLoading(true);
 			const response = await registerUser(formData);
 
 			const {status, data, message} = response;
@@ -49,6 +44,8 @@ const Register = () => {
 			}
 		} catch (error: any) {
 			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 

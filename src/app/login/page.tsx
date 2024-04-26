@@ -8,7 +8,8 @@ import {toast} from 'react-toastify';
 
 const Login = () => {
 	const router = useRouter();
-	const {setIsLoggedIn, setUser, setForms} = useContext(AppContext);
+	const {setIsLoggedIn, setUser, setForms, setIsLoading} =
+		useContext(AppContext);
 
 	const [formData, setFormData] = useState({
 		email: '',
@@ -19,6 +20,7 @@ const Login = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		try {
+			setIsLoading(true);
 			e.preventDefault();
 			if (!formData.email || !formData.password)
 				throw new Error('Please provide your username and password');
@@ -60,6 +62,8 @@ const Login = () => {
 			}
 		} catch (error: any) {
 			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
