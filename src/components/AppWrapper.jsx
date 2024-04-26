@@ -22,7 +22,9 @@ const AppWrapper = ({children, isLoading}) => {
 					<Navbar />
 				))}
 			<div>{children}</div>
-			{(pathname !== '/login' || pathname !== '/register') && <Footer />}
+			{!isLoading && (pathname !== '/login' || pathname !== '/register') && (
+				<Footer />
+			)}
 			<ToastContainer />
 		</section>
 	);
