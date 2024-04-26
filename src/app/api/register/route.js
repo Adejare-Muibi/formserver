@@ -4,6 +4,8 @@ export async function POST(request) {
   const payload = await request.json();
   const { first_name, last_name, email, password } = payload;
 
+  console.log(payload);
+
   if (!first_name) {
     return NextResponse.json({ message: "First name is required" });
   } else if (!last_name) {

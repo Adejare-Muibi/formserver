@@ -7,16 +7,50 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Simple = () => {
     const [isCopy, setIsCopy] = useState(false);
-  const codeString = `<form className='flex max-sm:flex  flex-col  shadow-lg  gap-4 border-solid border-2   p-7'>     
-  <label className='lg:text-[15px]  text-[grey]' htmlFor="Full-Name">Full Name</label>
-  <input className='border-solid border-2  lg:w-[45vw]  p-3' type="text" placeholder='First and Last' />
-  <label className=' lg:text-[15px] text-[grey]' htmlFor="">Email Address</label>
-  <input className='border-solid border-2 lg:w-[45vw] p-3' type="text" placeholder='@EmailToshConsultGjmail.Com' />
-  <label className='text-[15px] text-[grey] ' htmlFor="">Message</label>
-  <textarea className='border-solid border-2 lg:w-[45vw]  p-3' name="" id="" cols="30" rows="10"></textarea>
-
-  <div className='border-solid text-[grey]  border-2 lg:w-[7vw] p-2 items-center flex justify-center'><button>Submit</button></div>
-  </form> `;
+  const codeString = `    <div className='lg:flex flex-col 
+  items-center gap-[30px] p-6'>
+  <div className='lg:flex flex-col items-center gap-[30px]'>
+      <div className="flex flex-col items-center gap-[16px]
+       max-md:mb-[15px]">
+        <h1 className='text-[25px] max-sm:text-center 
+        font-bold'>Simple Contact Form</h1>
+        <p className=' max-md:w-[90vw] max-sm:text[px] 
+        text-[15px] w-[47vw] text-center'>Use this simple 
+        HTML contact form on your website to provide viewers 
+        a quick and easy way to send you an email message without 
+        them having to know your email address.</p>
+        <h5 className='text-[12px] max-sm:text-center font-bold 
+        underline decoration-1 text-[#c02dc1]'> GET THE CODE</h5> 
+      </div>
+      <form className='flex max-sm:flex   flex-col shadow-lg 
+       gap-7 border-solid border-2  p-7'>
+        <div className="flex flex-col gap-[6px]">
+          <label className='lg:text-[15px]  text-[grey]' 
+          htmlFor="Full-Name">Full Name</label>
+          <input className='border-solid border-2  lg:w-[45vw] 
+           p-3' type="text" placeholder='First and Last' /> 
+        </div>
+        <div className="flex flex-col gap-[6px]">
+          <label className=' lg:text-[15px] text-[grey]' 
+          htmlFor="">Email Address</label>
+          <input className='border-solid border-2 lg:w-[45vw] p-3' 
+          type="text" placeholder='@EmailToshConsultGjmail.Com' />
+        </div>
+        <div className="flex flex-col gap-[6px]">
+          <label className='text-[15px] text-[grey] ' htmlFor="
+          ">Message</label>
+          <textarea className='border-solid border-2 lg:w-[45vw] p-3'
+           name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div className='border-solid text-[grey] flex items-center
+         justify-center border-2 max-md:w-[100%] py-[10px] w-[7vw]'><button
+          className=''>Submit</button></div>
+      </form> 
+  </div>
+  <div className='flex flex-col items-center justify-center p-5'>
+    <h2 className='text-[19px] text-[#0E232D] font-bold text-center 
+    items-center'>GET THE CODE</h2>
+  <div>`;
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(codeString);
@@ -28,30 +62,31 @@ const Simple = () => {
   };
 
   return (
-    <div className='lg:flex flex-col items-center gap-4 p-6'>
-        <div className='lg:flex flex-col items-center'>
-            <h1 className='text-[35px] max-sm:text-center font-bold'>Simple Contact Form</h1>
-            <p className=' max-sm:w-[100vw] max-sm:text[px] p-8 text-[15px] w-[47vw] text-center'>Use this simple HTML contact form on your website to provide viewers a quick and easy way to send you an email message without them having to know your email address.</p>
-                <h5 className='text-[15px] max-sm:text-center pb-[30px] font-bold underline decoration-1 text-[#c02dc1]'> GET THE CODE</h5> 
-        
-            <form className='flex max-sm:flex   flex-col  shadow-lg  gap-4 border-solid border-2   p-7'>
-        
-            <label className='lg:text-[15px]  text-[grey]' htmlFor="Full-Name">Full Name</label>
-            <input className='border-solid border-2  lg:w-[45vw]  p-3' type="text" placeholder='First and Last' />
-
-            <label className=' lg:text-[15px] text-[grey]' htmlFor="">Email Address</label>
-            <input className='border-solid border-2 lg:w-[45vw] p-3' type="text" placeholder='@EmailToshConsultGjmail.Com' />
-            
-            
-
-            <label className='text-[15px] text-[grey] ' htmlFor="">Message</label>
-            <textarea className='border-solid border-2 lg:w-[45vw]  p-3' name="" id="" cols="30" rows="10"></textarea>
-
-            <div className='border-solid text-[grey]  border-2 lg:w-[7vw] p-2 items-center flex justify-center'><button>Submit</button></div>
+    <div className='lg:flex flex-col items-center gap-[30px] p-6'>
+        <div className='lg:flex flex-col items-center gap-[30px]'>
+            <div className="flex flex-col items-center gap-[16px] max-md:mb-[15px]">
+              <h1 className='text-[25px] max-sm:text-center font-bold'>Simple Contact Form</h1>
+              <p className=' max-md:w-[90vw] max-sm:text[px] text-[15px] w-[47vw] text-center'>Use this simple HTML contact form on your website to provide viewers a quick and easy way to send you an email message without them having to know your email address.</p>
+              <h5 className='text-[12px] max-sm:text-center font-bold underline decoration-1 text-[#c02dc1]'> GET THE CODE</h5> 
+            </div>
+            <form className='flex max-sm:flex   flex-col shadow-lg  gap-7 border-solid border-2  p-7'>
+              <div className="flex flex-col gap-[6px]">
+                <label className='lg:text-[15px]  text-[grey]' htmlFor="Full-Name">Full Name</label>
+                <input className='border-solid border-2  lg:w-[45vw]  p-3' type="text" placeholder='First and Last' /> 
+              </div>
+              <div className="flex flex-col gap-[6px]">
+                <label className=' lg:text-[15px] text-[grey]' htmlFor="">Email Address</label>
+                <input className='border-solid border-2 lg:w-[45vw] p-3' type="text" placeholder='@EmailToshConsultGjmail.Com' />
+              </div>
+              <div className="flex flex-col gap-[6px]">
+                <label className='text-[15px] text-[grey] ' htmlFor="">Message</label>
+                <textarea className='border-solid border-2 lg:w-[45vw] p-3' name="" id="" cols="30" rows="10"></textarea>
+              </div>
+              <div className='border-solid text-[grey] flex items-center justify-center border-2 max-md:w-[100%] py-[10px] w-[7vw]'><button className=''>Submit</button></div>
             </form> 
         </div>
         <div className='flex flex-col items-center justify-center p-5'>
-        <h2 className='text-[25px] text-[#0E232D] font-bold text-center  items-center'>GET THE CODE</h2>
+          <h2 className='text-[19px] text-[#0E232D] font-bold text-center  items-center'>GET THE CODE</h2>
         <div>
 
         <div className="flex flex-col max-sm:w-[90vw] w-[50vw] relative overflow-x-hidden items-center gap-4">

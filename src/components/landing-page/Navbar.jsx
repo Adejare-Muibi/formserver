@@ -43,10 +43,10 @@ const Navbar = () => {
       <div className="">
         <nav className="w-full flex lg:items-center justify-between max-md:justify-center max-md:gap-[80px] max-md:flex-col">
           <div className="flex lg:item-center justify-between max-md:justify-center w-[40%] max-md:gap-[23px] max-md:w-auto max-md:flex-col">
-            <div className="flex max-md:w-[100%] justify-between items-center">
+            <div className="flex max-md:w-[100%] justify-between items-center max-md:relative z-10  ">
 
-              <div className=""><Image src={"/formserver.jpg"} height={130} width={160} alt="logo" priority/></div>
-              <span className="lg:hidden cursor-pointer text-[25px]" onClick={handlemodal}>{modal ? <IoCloseSharp /> : <BsThreeDotsVertical /> }</span>            
+              <Link href={"/"} className=""><Image src={"/formserver.jpg"} className="max-md:w-[29vw]" height={130} width={160} alt="logo" priority/></Link>
+              <span className="lg:hidden cursor-pointer text-[23px]" onClick={handlemodal}>{modal ? <IoCloseSharp /> : <BsThreeDotsVertical /> }</span>            
             </div>
             <div className={`flex lg:items-center ${modal ? "": "max-md:hidden"} max-md:flex-col gap-8 max-md:gap-[12px]`}>
               <Link className="font-[600] text-[18px] hover:text-[#C02DC1]" href={"/"}>Plan</Link>

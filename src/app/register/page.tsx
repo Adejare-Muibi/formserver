@@ -4,7 +4,6 @@ import {registerUser} from '@/utils/apiCalls';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import React, {useContext, useState} from 'react';
-import {IoMdCheckmark} from 'react-icons/io';
 import {toast} from 'react-toastify';
 
 const Register = () => {
@@ -50,15 +49,17 @@ const Register = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center w-full h-screen gap-[50px]">
-			<div className="w-full max-w-[500px]">
+		<div className="flex items-center max-md:items-start justify-center w-full h-screen gap-[50px] max-md:w-[90%] max-md:m-auto max-md:py-[20px] max-md:h-auto">
+			<div className="w-full max-w-[500px] max-md:w-[100%] flex flex-col max-mditems-center">
 				<h2></h2>
-				<h1 className="font-[800] text-3xl">Register for Formspree</h1>
+				<h1 className="font-[800] max-md:text-[25px] max-md: text-3xl">
+					Register for Formspree
+				</h1>
 				<Link className="text-[#DC2626]" href={'/register'}></Link>
 
-				<form className="w-full flex flex-col gap-2 mt-5">
-					<div className="flex gap-[40px]">
-						<div className="">
+				<form className="w-full flex flex-col gap-2 mt-5 max-md:">
+					<div className="flex gap-[40px] max-md:flex-col max-md:gap-[4px]">
+						<div className="max-md:flex flex-col">
 							<label htmlFor="">First Name*</label>
 							<input
 								value={formData.first_name}
@@ -69,7 +70,7 @@ const Register = () => {
 								className="p-2  bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
 							/>
 						</div>
-						<div>
+						<div className="max-md:flex flex-col">
 							<label htmlFor="">Last Name*</label>
 							<input
 								value={formData.last_name}
@@ -81,7 +82,7 @@ const Register = () => {
 							/>
 						</div>
 					</div>
-					<div className="mb-4 relative">
+					<div className="mb-4 relative max-md:flex flex-col">
 						<label htmlFor="">Email*</label>
 						<input
 							value={formData.email}
@@ -92,7 +93,7 @@ const Register = () => {
 							className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
 						/>
 					</div>
-					<div className="mb-4 relative">
+					<div className="mb-4 relative max-md:flex flex-col">
 						<label htmlFor="">password*</label>
 						<input
 							value={formData.password}
@@ -104,10 +105,15 @@ const Register = () => {
 						/>
 					</div>
 				</form>
-				<div className="text-sm ">
-					<div className="flex items-center gap-1">
-						<input type="checkbox" name="privacy" id="privacy" />
-						<label htmlFor="privacy">
+				<div className="text-sm max-md:flex max-md:flex-col max-md:gap-[10px]">
+					<div className="flex items-center gap-1 max-md:items-start">
+						<input
+							type="checkbox"
+							name="privacy"
+							id="privacy"
+							className="max-md:mt-[3px]"
+						/>
+						<label htmlFor="privacy" className="max-md:w-[70vw]">
 							<span>Please check out our</span>{' '}
 							<Link className="text-[#DC2626]" href={'/'}>
 								Help Site
@@ -122,13 +128,18 @@ const Register = () => {
 							</Link>
 						</label>
 					</div>
-					<div className="flex items-center gap-1">
-						<input type="checkbox" name="update" id="update" />
-						<label htmlFor="update">
+					<div className="flex gap-1 max-md:items-start">
+						<input
+							type="checkbox"
+							name="update"
+							id="update"
+							className="max-md:mt-[3px]"
+						/>
+						<label htmlFor="update" className="max-md:w-[70vw]">
 							<h4>Please send me occasional Formspree news updates</h4>
 						</label>
 					</div>
-					<div className="flex flex-col ">
+					<div className="flex flex-col gap-[7px] max-md: max-md:gap-[7px]">
 						<button
 							onClick={handleSubmit}
 							disabled={
@@ -145,16 +156,15 @@ const Register = () => {
 								!formData.password
 									? 'bg-[#F3F4F6] text-[#9fa2a8]'
 									: 'bg-[#c02dc1] text-white'
-							}  rounded-xl px-4 py-2 mt-4 w-[25%]`}
+							}  rounded-xl px-4 py-3 mt-4 w-[40%] max-md:w-[90%] max-md:py-4`}
 						>
 							Register
 						</button>
+						<span>Already have an account?</span>{' '}
+						<Link className="text-[#DC2626]" href={'/login'}>
+							Sign In
+						</Link>
 					</div>
-					<span>Already have an account?</span>{' '}
-					<Link className="text-[#DC2626] " href={'/login'}>
-						Sign In
-					</Link>
-					,
 				</div>
 			</div>
 		</div>

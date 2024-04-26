@@ -10,7 +10,6 @@ const page = () => {
     <>
       <Survey />
       <Form />
-      <Footer/>
     </>
 
   )

@@ -17,7 +17,6 @@ const page = () => {
       <Squash/>
       <Create/>
       <Comp/>
-      <Footer/>
     </section>
   );
 }
