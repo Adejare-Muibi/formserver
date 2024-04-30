@@ -17,7 +17,8 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 		'/dashboard',
 		'/profile',
 		'/settings',
-		'/create',
+		'/form/create',
+		'/form/manage',
 	];
 	const [isLoading, setIsLoading] = useState(
 		authenticatedRoutes.includes(pathname)

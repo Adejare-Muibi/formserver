@@ -48,7 +48,6 @@ const DashboardNavbar = () => {
 
 	const handleLogout = () => {
 		setIsLoading(true);
-
 		router.push('/login');
 		localStorage.removeItem('_tkn');
 		setIsLoggedIn(false);
@@ -143,13 +142,12 @@ const NavLink = ({navLink}) => {
 			{navLink.isDropdown ? (
 				isExpanded ? (
 					<>
-						{console.log(pathname.split('/')[1], navLink.url)}
 						<span
 							className={`${
 								pathname.split('/')[1] === navLink.url
 									? 'lg:text-[#c02dc1] font-bold'
 									: 'lg:text-black'
-							} cursor-pointer text-lg`}
+							} text-lg text-white cursor-pointer`}
 							onClick={handleClose}
 						>
 							{navLink.label} <i className="fas fa-chevron-up"></i>
@@ -163,7 +161,7 @@ const NavLink = ({navLink}) => {
 											pathname === drop.url
 												? 'lg:text-[#c02dc1] font-bold'
 												: 'lg:text-black'
-										} text-lg`}
+										} text-white text-lg`}
 									>
 										{drop.label}
 									</Link>
@@ -173,11 +171,11 @@ const NavLink = ({navLink}) => {
 					</>
 				) : (
 					<span
-						className={`cursor-pointer ${
+						className={`${
 							pathname.split('/')[1] === navLink.url
 								? 'lg:text-[#c02dc1] font-bold'
 								: 'lg:text-black'
-						} lg:text-black text-lg`}
+						} text-lg text-white cursor-pointer`}
 						onClick={handleExpand}
 					>
 						{navLink.label} <i className="fas fa-chevron-down"></i>
