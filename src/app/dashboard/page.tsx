@@ -25,7 +25,7 @@ const Dashboard = () => {
 					</>
 				) : (
 					<div className="flex items-center justify-center h-96">
-						<Link href={'/create'}>
+						<Link href={'/form/create'}>
 							Click here to start creating your first form
 						</Link>
 					</div>
