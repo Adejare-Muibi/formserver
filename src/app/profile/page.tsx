@@ -93,7 +93,7 @@ const Form: FC<ProfileFormProp> = ({field, formData, setFormData}) => {
 		try {
 			setIsLoading(true);
 
-			const response = await updateProfile(`user/user/${user.email}`, {
+			const response = await updateProfile(`${user.email}`, {
 				[field.name]: formData[field.name],
 			});
 			if (response.status === 200) {

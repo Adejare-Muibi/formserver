@@ -1,5 +1,6 @@
 'use client';
 import {AppContext} from '@/context/AppContext';
+import {updatePassword} from '@/utils/apiCalls';
 import React, {useContext, useState} from 'react';
 import {toast} from 'react-toastify';
 
@@ -12,14 +13,29 @@ function Settings() {
 		confirm: '',
 	});
 
-	const handleUpdate = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		if (Object.values(formData).includes('')) {
-			toast.error('Please input all fields');
-		} else if (formData.password !== formData.confirm) {
-			toast.error('Passwords do not match');
-		} else if (formData.password.length < 6) {
-			toast.error('Passwords must be at least 6 characters long');
-		} else {
+	const handleUpdate = async (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		try {
+			e.preventDefault();
+			setIsLoading(true);
+			if (Object.values(formData).includes('')) {
+				toast.error('Please input all fields');
+			} else if (formData.password !== formData.confirm) {
+				toast.error('Passwords do not match');
+			} else if (formData.password.length < 6) {
+				toast.error('Passwords must be at least 6 characters long');
+			} else {
+				const response = await updatePassword(formData.old, formData);
+				if (response.status === 200) {
+					return toast.success('Password updated successfully');
+				}
+				throw new Error(response.message);
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 

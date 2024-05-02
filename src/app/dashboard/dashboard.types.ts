@@ -9,6 +9,7 @@ interface User {
 
 interface Form {
 	_id?: number;
+	formId: string;
 	form_email: string;
 	form_name: string;
 	project_name: string;

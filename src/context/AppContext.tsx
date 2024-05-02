@@ -14,15 +14,15 @@ export const AppContext = createContext<AppContextProps>({} as AppContextProps);
 export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 	const pathname = usePathname();
 	const authenticatedRoutes = [
-		'/dashboard',
-		'/contact',
-		'/form/create',
-		'/form/manage',
-		'/settings',
-		'/profile',
+		'dashboard',
+		'contact',
+		'form',
+		'settings',
+		'profile',
 	];
+
 	const [isLoading, setIsLoading] = useState(
-		authenticatedRoutes.includes(pathname)
+		authenticatedRoutes.includes(pathname.split('/')[1])
 	);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState<User>({
@@ -60,9 +60,9 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 		};
 		const token = localStorage.getItem('_tkn');
 
-		if (token && authenticatedRoutes.includes(pathname)) {
+		if (token && authenticatedRoutes.includes(pathname.split('/')[1])) {
 			getUserState();
-		} else if (!token && authenticatedRoutes.includes(pathname)) {
+		} else if (!token && authenticatedRoutes.includes(pathname.split('/')[1])) {
 			router.replace('/login');
 			setIsLoading(false);
 			setIsLoggedIn(false);

@@ -1,10 +1,12 @@
+import {useRouter} from 'next/navigation';
 import React, {FC} from 'react';
 
 const FormsTable: FC<{forms: Form[]}> = ({forms}) => {
+	const router = useRouter();
 	const tableHeaders = ['Name', 'Email', 'Project Name', 'Form ID'];
 
 	return (
-		<table className="w-full border-gray-200 border-2">
+		<table className="w-[full] border-gray-200 border-2">
 			<thead>
 				<tr className="border-b-2">
 					{tableHeaders.map((tableHeader, index) => (
@@ -21,7 +23,11 @@ const FormsTable: FC<{forms: Form[]}> = ({forms}) => {
 			</thead>
 			<tbody>
 				{forms.map(form => (
-					<tr key={form._id} className="border-b-2">
+					<tr
+						key={form._id}
+						className="border-b-2 cursor-pointer"
+						onClick={() => router.push(`/form/manage/${form.formId}`)}
+					>
 						<td className="w-1/4 py-5 px-5 border-r-2 text-center">
 							{form.form_name}
 						</td>
@@ -31,7 +37,9 @@ const FormsTable: FC<{forms: Form[]}> = ({forms}) => {
 						<td className="w-1/4 py-5 px-5 border-r-2 text-center">
 							{form.project_name}
 						</td>
-						<td className="w-1/4 py-5 px-5 border-r-2 text-left">{form._id}</td>
+						<td className="w-1/4 py-5 px-5 border-r-2 text-center">
+							{form.formId}
+						</td>
 					</tr>
 				))}
 			</tbody>

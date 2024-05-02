@@ -1,18 +1,20 @@
 'use client';
 import {AppContext} from '@/context/AppContext';
-import {submitForm} from '@/utils/apiCalls';
+import {deleteForm, updateForm} from '@/utils/apiCalls';
 import {useRouter} from 'next/navigation';
 import React, {useContext, useState} from 'react';
 import {toast} from 'react-toastify';
 
-const CreateForm = () => {
+const EditForm = ({params}: {params: {id: string}}) => {
 	const router = useRouter();
-	const {user, setReload, setIsLoading} = useContext(AppContext);
+	const {forms = [], user, setIsLoading, setReload} = useContext(AppContext);
+	const form = forms.find(form => form.formId === params.id);
 	const [formData, setFormData] = useState({
 		form_email: '',
 		form_name: '',
 		project_name: '',
 		formId: '',
+		...form,
 	});
 
 	const handleSubmit = async (
@@ -28,16 +30,15 @@ const CreateForm = () => {
 		}
 
 		try {
-			const response = await submitForm(formData);
+			const response = await updateForm(params.id, formData);
 			const {status, data, message} = response;
 
 			if (status >= 400) throw new Error(message);
-			console.log(status);
 
-			if (status === 201) {
-				toast.success('Submitted successfully');
+			if (status === 200) {
+				toast.success('Updated successfully');
 				setReload(prev => !prev);
-				return router.push('/dashboard');
+				return router.replace('/form/manage');
 			}
 		} catch (error: any) {
 			toast.error(error.message);
@@ -46,9 +47,45 @@ const CreateForm = () => {
 		}
 	};
 
+	const handleDelete = async (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		e.preventDefault();
+		setIsLoading(true);
+		if (!formData.form_name || !formData.project_name) {
+			return toast.error('Please provide all required fields');
+		}
+		if (!formData.form_email) {
+			formData.form_email = user.email;
+		}
+
+		try {
+			const response = await deleteForm(params.id);
+			const {status, data, message} = response;
+
+			if (status >= 400) throw new Error(message);
+
+			if (status === 200) {
+				toast.success('Form deleted successfully');
+				setReload(prev => !prev);
+				return router.replace('/form/manage');
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	if (!form) {
+		return <div>Form not found</div>;
+	}
+
 	return (
 		<main className="max-w-7xl m-auto my-10">
-			<h2 className="text-center text-2xl font-bold">Create a new form</h2>
+			<h2 className="text-center text-2xl font-bold">
+				Update {form.project_name} form
+			</h2>
 
 			<form
 				action=""
@@ -106,11 +143,14 @@ const CreateForm = () => {
 					className="bg-[#c02dc1] text-white py-5 rounded-lg shadow-lg mt-10"
 					onClick={handleSubmit}
 				>
-					Submit
+					Update Form
+				</button>
+				<button className="text-red-500" onClick={handleDelete}>
+					Delete Form
 				</button>
 			</form>
 		</main>
 	);
 };
 
-export default CreateForm;
+export default EditForm;

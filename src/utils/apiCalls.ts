@@ -59,12 +59,16 @@ export const submitForm = async (payload: Form) => {
 	}
 };
 
-export const updateProfile = async (url: string, payload: ProfileForm) => {
+export const updateForm = async (formID: string, payload: Form) => {
 	try {
 		const token = localStorage.getItem('_tkn');
-		const response = await axios.patch(`${SERVER_URL}/${url}`, payload, {
-			headers: {Authorization: `Bearer ${token}`},
-		});
+		const response = await axios.patch(
+			`${SERVER_URL}/user/form/update-form/${formID}`,
+			payload,
+			{
+				headers: {Authorization: `Bearer ${token}`},
+			}
+		);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
 		const err =
@@ -76,12 +80,67 @@ export const updateProfile = async (url: string, payload: ProfileForm) => {
 	}
 };
 
-export const updatePassword = async (url: string, payload: ProfileForm) => {
+export const deleteForm = async (formID: string) => {
 	try {
 		const token = localStorage.getItem('_tkn');
-		const response = await axios.patch(`${SERVER_URL}/${url}`, payload, {
-			headers: {Authorization: `Bearer ${token}`},
-		});
+		const response = await axios.delete(
+			`${SERVER_URL}/user/form/delete-form/${formID}`,
+			{
+				headers: {Authorization: `Bearer ${token}`},
+			}
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+
+export const updateProfile = async (
+	userEmail: string,
+	payload: ProfileForm
+) => {
+	try {
+		const token = localStorage.getItem('_tkn');
+		const response = await axios.patch(
+			`${SERVER_URL}/user/user/${userEmail}`,
+			payload,
+			{
+				headers: {Authorization: `Bearer ${token}`},
+			}
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+
+export const updatePassword = async (
+	tokenPassword: string,
+	payload: {
+		old?: string;
+		password: string;
+		confirm: string;
+	}
+) => {
+	try {
+		const token = localStorage.getItem('_tkn');
+		const response = await axios.post(
+			`${SERVER_URL}/user/change/${tokenPassword}`,
+			payload,
+			{
+				headers: {Authorization: `Bearer ${token}`},
+			}
+		);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
 		const err =
