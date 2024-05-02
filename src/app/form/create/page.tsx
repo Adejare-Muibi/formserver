@@ -7,7 +7,7 @@ import {toast} from 'react-toastify';
 
 const CreateForm = () => {
 	const router = useRouter();
-	const {user, setReload} = useContext(AppContext);
+	const {user, setReload, setIsLoading} = useContext(AppContext);
 	const [formData, setFormData] = useState({
 		form_email: '',
 		form_name: '',
@@ -18,6 +18,7 @@ const CreateForm = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
+		setIsLoading(true);
 		if (!formData.form_name || !formData.project_name) {
 			return toast.error('Please provide all required fields');
 		}
@@ -39,6 +40,8 @@ const CreateForm = () => {
 			}
 		} catch (error: any) {
 			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 

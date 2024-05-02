@@ -15,10 +15,11 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 	const pathname = usePathname();
 	const authenticatedRoutes = [
 		'/dashboard',
-		'/profile',
-		'/settings',
+		'/contact',
 		'/form/create',
 		'/form/manage',
+		'/settings',
+		'/profile',
 	];
 	const [isLoading, setIsLoading] = useState(
 		authenticatedRoutes.includes(pathname)
@@ -29,8 +30,10 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 		last_name: '',
 		email: '',
 		isVerified: false,
+		plan: 'basic',
 	});
 	const [forms, setForms] = useState<Form[]>([]);
+	const [contact, setContact] = useState<Contact[]>([]);
 	const [reload, setReload] = useState(false);
 	const router = useRouter();
 
@@ -43,6 +46,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 					setIsLoggedIn(true);
 					setUser(data.user);
 					setForms(data.forms);
+					setContact(data.contact);
 				} else {
 					throw new Error(message);
 				}
@@ -75,6 +79,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				setIsLoggedIn,
 				forms,
 				setForms,
+				contact,
 				reload,
 				setReload,
 				isLoading,

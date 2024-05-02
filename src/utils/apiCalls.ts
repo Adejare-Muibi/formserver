@@ -75,3 +75,20 @@ export const updateProfile = async (url: string, payload: ProfileForm) => {
 		return {status: 400, message: err};
 	}
 };
+
+export const updatePassword = async (url: string, payload: ProfileForm) => {
+	try {
+		const token = localStorage.getItem('_tkn');
+		const response = await axios.patch(`${SERVER_URL}/${url}`, payload, {
+			headers: {Authorization: `Bearer ${token}`},
+		});
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
