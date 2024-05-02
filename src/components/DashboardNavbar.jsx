@@ -7,7 +7,8 @@ import React, {useContext, useEffect, useState} from 'react';
 const DashboardNavbar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
-	const {setIsLoggedIn, setIsLoading, user} = useContext(AppContext);
+	const {setIsLoggedIn, setIsLoading, user, setUser, setForms, setContact} =
+		useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
 	const navLinks = [
@@ -56,6 +57,15 @@ const DashboardNavbar = () => {
 		router.push('/login');
 		localStorage.removeItem('_tkn');
 		setIsLoggedIn(false);
+		setUser({
+			first_name: '',
+			last_name: '',
+			email: '',
+			isVerified: true,
+			plan: 'basic',
+		});
+		setForms([]);
+		setContact([]);
 		setIsLoading(false);
 	};
 

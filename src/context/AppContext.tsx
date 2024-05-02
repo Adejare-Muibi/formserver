@@ -21,15 +21,16 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 		'profile',
 	];
 
-	const [isLoading, setIsLoading] = useState(
+	const [isContextLoading, setIsContextLoading] = useState(
 		authenticatedRoutes.includes(pathname.split('/')[1])
 	);
+	const [isLoading, setIsLoading] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState<User>({
 		first_name: '',
 		last_name: '',
 		email: '',
-		isVerified: false,
+		isVerified: true,
 		plan: 'basic',
 	});
 	const [forms, setForms] = useState<Form[]>([]);
@@ -52,10 +53,10 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				}
 			} catch (error: any) {
 				toast(error.message);
-				setIsLoggedIn(false);
+				setIsContextLoading(false);
 				router.replace('/login');
 			} finally {
-				setIsLoading(false);
+				setIsContextLoading(false);
 			}
 		};
 		const token = localStorage.getItem('_tkn');
@@ -64,7 +65,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 			getUserState();
 		} else if (!token && authenticatedRoutes.includes(pathname.split('/')[1])) {
 			router.replace('/login');
-			setIsLoading(false);
+			setIsContextLoading(false);
 			setIsLoggedIn(false);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,14 +81,16 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				forms,
 				setForms,
 				contact,
+				setContact,
 				reload,
 				setReload,
 				isLoading,
 				setIsLoading,
 			}}
 		>
-			<AppWrapper isLoading={isLoading}>
-				{isLoading ? <LoadingModal /> : children}
+			<AppWrapper isLoading={isContextLoading}>
+				{isContextLoading ? <LoadingModal /> : children}
+				{isLoading && <LoadingModal />}
 			</AppWrapper>
 		</AppContext.Provider>
 	);

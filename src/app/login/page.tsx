@@ -68,7 +68,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="w-full h-screen flex items-center justify-center">
+		<div className="w-full h-screen flex items-center justify-center max-w-[90%] m-auto">
 			<div className="w-full max-w-[500px]">
 				<h1 className="font-[800] text-3xl">Sign in</h1>
 				<div className="flex items-center mt-2 gap-1">
@@ -105,7 +105,7 @@ const Login = () => {
 					</div>
 					<div className="mb-4 relative">
 						<button
-							className="bg-[#c02dc1] text-white rounded w-full p-2"
+							className="bg-[#c02dc1] text-white rounded w-full p-3"
 							onClick={handleLogin}
 						>
 							Sign In
@@ -134,15 +134,15 @@ const Login = () => {
 					</span>
 					<div className="text-sm">
 						<span>Please check out our</span>{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/help'}>
 							Help Site
 						</Link>
 						,{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/terms'}>
 							Terms of Use
 						</Link>
 						, <span>and</span>{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/privacy-policy'}>
 							Privacy Policy
 						</Link>
 						.
