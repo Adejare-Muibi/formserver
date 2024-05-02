@@ -83,9 +83,7 @@ const EditForm = ({params}: {params: {id: string}}) => {
 
 	return (
 		<main className="max-w-7xl m-auto my-10">
-			<h2 className="text-center text-2xl font-bold">
-				Update {form.project_name} form
-			</h2>
+			<h2 className="text-center text-2xl font-bold">{form.project_name}</h2>
 
 			<form
 				action=""
