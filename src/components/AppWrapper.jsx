@@ -7,14 +7,14 @@ import {ToastContainer} from 'react-toastify';
 import {AppContext} from '@/context/AppContext';
 import Footer from './landing-page/Footer';
 
-const AppWrapper = ({children, isLoading}) => {
+const AppWrapper = ({children, isLoading, isOnAuthPage}) => {
 	const pathname = usePathname();
 	const {isLoggedIn} = useContext(AppContext);
 
 	return (
 		<section>
 			{!isLoading &&
-				(isLoggedIn ? (
+				(isLoggedIn && isOnAuthPage ? (
 					<DashboardNavbar />
 				) : pathname === '/login' || pathname === '/register' ? (
 					''

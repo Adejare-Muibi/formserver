@@ -78,7 +78,7 @@ const DashboardNavbar = () => {
 						onClick={() => setShowMobileNav(false)}
 					></div>
 				)}
-				<nav className="flex justify-between items-center gap-x-48 py-10 px-5 max-w-7xl m-auto">
+				<nav className="flex justify-between items-center gap-x-48 py-5 lg:py-10 px-5 max-w-7xl m-auto">
 					<div className="">
 						<Image
 							src={'/formserver.jpg'}

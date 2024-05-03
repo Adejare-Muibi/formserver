@@ -67,6 +67,18 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 			router.replace('/login');
 			setIsContextLoading(false);
 			setIsLoggedIn(false);
+		} else if (token && !authenticatedRoutes.includes(pathname.split('/')[1])) {
+			const getUserStateOnUnauthenticatedRoutes = async () => {
+				const response = await getDashboard();
+				const {status, data, message} = response;
+				if (status === 200) {
+					setIsLoggedIn(true);
+					setUser(data.user);
+					setForms(data.forms);
+					setContact(data.contact);
+				}
+			};
+			getUserStateOnUnauthenticatedRoutes();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [reload]);
@@ -88,7 +100,10 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 				setIsLoading,
 			}}
 		>
-			<AppWrapper isLoading={isContextLoading}>
+			<AppWrapper
+				isLoading={isContextLoading}
+				isOnAuthPage={authenticatedRoutes.includes(pathname.split('/')[1])}
+			>
 				{isContextLoading ? <LoadingModal /> : children}
 				{isLoading && <LoadingModal />}
 			</AppWrapper>
