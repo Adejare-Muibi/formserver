@@ -2,7 +2,17 @@ import {AppContext} from '@/context/AppContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {FC, useContext, useEffect, useState} from 'react';
+
+interface NavLinkType {
+	label: string;
+	url: string;
+	isDropdown: boolean;
+	dropdown?: {
+		label: string;
+		url: string;
+	}[];
+}
 
 const DashboardNavbar = () => {
 	const pathname = usePathname();
@@ -11,7 +21,7 @@ const DashboardNavbar = () => {
 		useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
-	const navLinks = [
+	const navLinks: NavLinkType[] = [
 		{
 			label: 'Dashboard',
 			url: '/dashboard',
@@ -136,7 +146,7 @@ const DashboardNavbar = () => {
 
 export default DashboardNavbar;
 
-const NavLink = ({navLink}) => {
+const NavLink: FC<{navLink: NavLinkType}> = ({navLink}) => {
 	const pathname = usePathname();
 	const [isExpanded, setIsExpanded] = useState(false);
 
@@ -168,7 +178,7 @@ const NavLink = ({navLink}) => {
 							{navLink.label} <i className="fas fa-chevron-up"></i>
 						</span>
 						<ul className="ml-5 lg:-ml-5 mt-3 lg:mt-8 flex flex-col gap-y-3 lg:absolute lg:bg-white lg:px-10 lg:py-2 lg:shadow-md">
-							{navLink.dropdown.map(drop => (
+							{navLink?.dropdown?.map(drop => (
 								<li key={drop.label}>
 									<Link
 										href={drop.url}
