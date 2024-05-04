@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
 import React, {FC, useContext, useEffect, useState} from 'react';
+import ScrollLock from './scroll-lock';
 
 interface NavLinkType {
 	label: string;
@@ -140,6 +141,8 @@ const DashboardNavbar = () => {
 					You need to verify your email to create a form, verify now
 				</span>
 			)}
+
+			<ScrollLock enabled={showMobileNav} />
 		</>
 	);
 };
