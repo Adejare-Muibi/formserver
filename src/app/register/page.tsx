@@ -218,14 +218,16 @@ const Register = () => {
 								!formData.first_name ||
 								!formData.last_name ||
 								!formData.email ||
-								!formData.password
+								!formData.password ||
+								!confirmPassword
 							}
 							type="submit"
 							className={` ${
 								!formData.first_name ||
 								!formData.last_name ||
 								!formData.email ||
-								!formData.password
+								!formData.password ||
+								!confirmPassword
 									? 'bg-[#F3F4F6] text-[#9fa2a8]'
 									: 'bg-[#c02dc1] text-white'
 							}  rounded-xl px-4 py-3 mt-4 w-[40%] max-md:w-[90%] max-md:py-4`}

@@ -10,7 +10,10 @@ export const registerUser = async (payload: Register) => {
 		console.log(response.data);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
-		const err = error.response?.data?.message || error.message;
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
 		console.log('error', err);
 		return {status: 400, message: err};
 	}
@@ -21,7 +24,27 @@ export const loginUser = async (payload: Login) => {
 		const response = await axios.post(`${SERVER_URL}/auth/signin`, payload);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
-		const err = error.response?.data?.message || error.message;
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+
+export const verifyEmail = async (token: string) => {
+	try {
+		const response = await axios.get(
+			`${SERVER_URL}/auth/register/verify/${token}`
+		);
+		console.log(response);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
 		console.log('error', err);
 		return {status: 400, message: err};
 	}
@@ -35,7 +58,10 @@ export const getDashboard = async () => {
 		});
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
-		const err = error.response?.data?.message || error.message;
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
 		console.log('error', err);
 		return {status: 400, message: err};
 	}
@@ -53,7 +79,10 @@ export const submitForm = async (payload: Form) => {
 		);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {
-		const err = error.response?.data?.message || error.message;
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
 		console.log('error', err);
 		return {status: 400, message: err};
 	}
@@ -127,7 +156,6 @@ export const updateProfile = async (
 export const updatePassword = async (
 	tokenPassword: string,
 	payload: {
-		old?: string;
 		password: string;
 		confirm: string;
 	}
@@ -135,11 +163,63 @@ export const updatePassword = async (
 	try {
 		const token = localStorage.getItem('_tkn');
 		const response = await axios.post(
-			`${SERVER_URL}/user/change/${tokenPassword}`,
+			`${SERVER_URL}/user/change-password/${tokenPassword}`,
 			payload,
 			{
 				headers: {Authorization: `Bearer ${token}`},
 			}
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+export const forgetPassword = async (payload: {email: string}) => {
+	try {
+		const response = await axios.post(
+			`${SERVER_URL}/auth/reset-password`,
+			payload
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+
+export const resetPassword = async (token: string) => {
+	try {
+		const response = await axios.get(
+			`${SERVER_URL}/auth/reset-password/${token}`
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
+
+export const changePassword = async (payload: {
+	token: string;
+	password: string;
+}) => {
+	try {
+		const response = await axios.post(
+			`${SERVER_URL}/auth/reset-password/update`,
+			payload
 		);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {

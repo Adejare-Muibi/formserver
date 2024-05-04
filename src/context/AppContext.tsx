@@ -81,7 +81,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 			getUserStateOnUnauthenticatedRoutes();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [reload]);
+	}, [reload, authenticatedRoutes.includes(pathname.split('/')[1])]);
 
 	return (
 		<AppContext.Provider

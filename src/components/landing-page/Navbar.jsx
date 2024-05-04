@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BiChevronDown, BiChevronUp} from 'react-icons/bi';
 import {LuBookOpen} from 'react-icons/lu';
 import {BsThreeDotsVertical} from 'react-icons/bs';
 import {IoCloseSharp} from 'react-icons/io5';
 import {AppContext} from '@/context/AppContext';
+import {usePathname} from 'next/navigation';
 
 const ResourcesProps = ({paragraph, text, icon, style, tag}) => {
 	return (
@@ -23,12 +24,16 @@ const ResourcesProps = ({paragraph, text, icon, style, tag}) => {
 };
 
 const Navbar = () => {
+	const pathname = usePathname();
 	const {isLoggedIn} = useContext(AppContext);
 	const [isOpen, setIsOpen] = useState(false);
-	const handleOpen = e => {
-		if (e.currentTarget === e.target) {
-			setIsOpen(!isOpen);
-		}
+
+	useEffect(() => {
+		setIsOpen(false);
+	}, [pathname]);
+
+	const handleOpen = () => {
+		setIsOpen(!isOpen);
 	};
 	const [modal, setModal] = useState(false);
 	const [resources, setResources] = useState(false);
@@ -44,7 +49,7 @@ const Navbar = () => {
 	return (
 		<header className="p-4">
 			<div className="">
-				<nav className="w-full flex md:items-center md:justify-between max-md:justify-center max-md:gap-[50px] max-md:flex-col">
+				<nav className="w-full flex md:items-center md:justify-between max-md:justify-center max-md:gap-[50px] max-md:flex-col gap-x-14">
 					<div className="flex md:items-center justify-between max-md:justify-center max-md:gap-[23px] max-md:w-auto max-md:flex-col gap-x-28">
 						<div className="flex max-md:w-[100%] justify-between items-center max-md:relative z-10  ">
 							<Link href={'/'} className="">
@@ -84,33 +89,35 @@ const Navbar = () => {
 									{isOpen ? <BiChevronUp /> : <BiChevronDown />}
 								</span>
 								<div
-									className={`absolute max-md:flex-col max-md:w-[80%] transition-all duration-300 top-10 ${
+									className={`absolute max-md:flex-col max-md:w-[80%] transition-transform duration-300 top-10 ${
 										isOpen
-											? ' opacity-100 translate-y-0'
-											: ' translate-y-[100px] opacity-0 overflow-hidden'
-									} bg-white flex gap-3 shadow-md rounded-xl w-[500px]  h-fit`}
+											? ' opacity-100 translate-y-0 h-fit w-[500px]'
+											: ' translate-y-[100px] h-0 w-0 opacity-0 overflow-hidden'
+									} bg-white flex gap-3 shadow-md rounded-xl`}
 								>
-									<div className="flex p-5 gap-4 flex-col w-1/2 max-md:w-[100%]">
-										<Link href={'/library-details'}>
+									{isOpen && (
+										<div className="flex p-5 gap-4 flex-col w-1/2 max-md:w-[100%]">
+											<Link href={'/library-details'}>
+												<ResourcesProps
+													icon={
+														<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
+													}
+													tag={'/library-details'}
+													text={'Library'}
+													style={'hover:bg-[#F9FAFB]'}
+													paragraph={'hello world'}
+												/>
+											</Link>
 											<ResourcesProps
 												icon={
 													<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
 												}
-												tag={'/library-details'}
-												text={'Library'}
+												text={'Guide'}
 												style={'hover:bg-[#F9FAFB]'}
 												paragraph={'hello world'}
 											/>
-										</Link>
-										<ResourcesProps
-											icon={
-												<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
-											}
-											text={'Guide'}
-											style={'hover:bg-[#F9FAFB]'}
-											paragraph={'hello world'}
-										/>
-									</div>
+										</div>
+									)}
 									<div className="bg-[#F9FAFB] p-5 w-1/2 max-md:w-[100%]">
 										<ResourcesProps
 											icon={
@@ -145,21 +152,21 @@ const Navbar = () => {
 						{isLoggedIn ? (
 							<Link
 								href={'/dashboard'}
-								className="px-4 py-2 bg-[#c12dc0] flex max-md:items-center max-md:justify-center text-white rounded-sm max-md:w-[95%]"
+								className="px-4 py-2 bg-[#c12dc0] flex max-md:items-center max-md:justify-center text-white rounded-sm max-md:w-[95%] text-center"
 							>
-								Dashboard
+								Go to Dashboard
 							</Link>
 						) : (
 							<>
 								<Link
 									href={'/register'}
-									className="px-4 py-2 bg-[#c12dc0] max-md:w-[95%] flex max-md:items-center max-md:justify-center text-white rounded-[5px]"
+									className="px-4 py-2 bg-[#c12dc0] max-md:w-[95%] flex max-md:items-center max-md:justify-center text-white rounded-[5px] text-center"
 								>
 									Get Started
 								</Link>
 								<Link
 									href={'/login'}
-									className="px-4 py-2 bg-[#FECACA] max-md:w-[95%] flex max-md:items-center max-md:justify-center rounded-[5px] text-[#c12dc0]"
+									className="px-4 py-2 bg-[#FECACA] max-md:w-[95%] flex max-md:items-center max-md:justify-center rounded-[5px] text-[#c12dc0] text-center"
 								>
 									Sign In
 								</Link>
