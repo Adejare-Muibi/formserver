@@ -59,7 +59,7 @@ function Settings() {
 				});
 				if (response.status === 200) {
 					toast.success(
-						'Account upgrade completed. Enjoy unlimited transactions'
+						'Account upgrade completed. Enjoy unlimited submissions'
 					);
 					return setReload(prev => !prev);
 				} else {
