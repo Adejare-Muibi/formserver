@@ -15,7 +15,7 @@ const ResourcesProps = ({ paragraph, text, icon, style, tag }) => {
       </div>
       <div className="flex items-start flex-col gap-1">
         <h2>{text}</h2>
-        <p className=" opacity-50 text-sm">{paragraph}</p>
+        <p className="text-left opacity-50 text-sm">{paragraph}</p>
       </div>
     </div>
   );
@@ -61,7 +61,7 @@ const Navbar = () => {
                         tag={"/library-details"}
                         text={"Library"}
                         style={"hover:bg-[#F9FAFB]"}
-                        paragraph={"hello world"}
+                        paragraph={"A collection of example Html forms, on how to use a form"}
                       />
                       </Link>
                     <ResourcesProps
@@ -70,7 +70,7 @@ const Navbar = () => {
                       }
                       text={"Guide"}
                       style={"hover:bg-[#F9FAFB]"}
-                      paragraph={"hello world"}
+                      paragraph={"On how to use each form endpoints"}
                     />
                   </div>
                   <div className="bg-[#F9FAFB] p-5 w-1/2 max-md:w-[100%]">
@@ -78,9 +78,9 @@ const Navbar = () => {
                       icon={
                         <LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
                       }
-                      text={"Changelog"}
+                      text={"Announcement"}
                       style={"bg-[#F9FAFB] hover:bg-[white]"}
-                      paragraph={"hello world"}
+                      paragraph={"Get Update on Our latest news and services"}
                     />
                   </div>
                 </div>

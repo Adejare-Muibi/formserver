@@ -23,7 +23,7 @@ const Hero = () => {
   
 
   return (
-    <div className="flex w-full flex-col justify-center items-center py-10 gap-12 max-md:sticky">
+    <div className="flex w-full flex-col justify-center items-center py-10 gap-12 z-0">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-[50px] font-bold max-md:text-center max-md:text-[39px] max-md:w-[80vw]">
           Easy Form Endpoints for any developer
