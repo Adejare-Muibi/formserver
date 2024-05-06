@@ -1,10 +1,12 @@
 'use client';
+import {AppContext} from '@/context/AppContext';
 import Link from 'next/link';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {vscDarkPlus} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Hero = () => {
+	const {isLoggedIn} = useContext(AppContext);
 	const [isCopy, setIsCopy] = useState(false);
 	const codeString = `<form action="https://formserver.io/f/{form_id}" method="post">
     < label for= "email" > Your Email</label >
@@ -32,7 +34,7 @@ const Hero = () => {
 					the submissions. No PHP, Javascript or any backend code required.
 				</p>
 				<Link
-					href={'/register'}
+					href={isLoggedIn ? '/dashboard' : '/register'}
 					className="px-7 py-4 bg-[#c02dc1] text-white border-none rounded-[5px] "
 				>
 					Get Started
