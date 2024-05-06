@@ -5,8 +5,9 @@ import AppWrapper from '@/components/AppWrapper';
 import {getDashboard} from '@/utils/apiCalls';
 import {toast} from 'react-toastify';
 import LoadingModal from '../components/LoadingModal.jsx';
-
 import {AppContextProps, AppContextProviderProps} from './AppContext.types';
+import ScrollLock from '../components/scroll-lock';
+
 export const AppContext = createContext<AppContextProps>({} as AppContextProps);
 
 // export const useAuthContext = (): AppContextProps => useContext(AppContext);
@@ -106,6 +107,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({children}) => {
 			>
 				{isContextLoading ? <LoadingModal /> : children}
 				{isLoading && <LoadingModal />}
+				<ScrollLock enabled={isLoading} />
 			</AppWrapper>
 		</AppContext.Provider>
 	);

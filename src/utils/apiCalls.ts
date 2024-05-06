@@ -231,3 +231,24 @@ export const changePassword = async (payload: {
 		return {status: 400, message: err};
 	}
 };
+
+export const upgradePlan = async (payload: {reference: string}) => {
+	try {
+		const token = localStorage.getItem('_tkn');
+		const response = await axios.post(
+			`${SERVER_URL}/user/plan-payment`,
+			payload,
+			{
+				headers: {Authorization: `Bearer ${token}`},
+			}
+		);
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
