@@ -39,8 +39,7 @@ function Settings() {
 			} else {
 				const response = await updatePassword(formData.old, formData);
 				if (response.status === 200) {
-					toast.success('Password updated successfully');
-					return setReload(prev => !prev);
+					return toast.success('Password updated successfully');
 				}
 				throw new Error(response.message);
 			}
@@ -54,6 +53,7 @@ function Settings() {
 	const onSuccess = async (paystackResponse: TransactionInfo) => {
 		try {
 			if (paystackResponse.status === 'success') {
+				setIsLoading(true);
 				const response = await upgradePlan({
 					reference: paystackResponse.reference,
 				});
@@ -61,6 +61,7 @@ function Settings() {
 					toast.success(
 						'Account upgrade completed. Enjoy unlimited transactions'
 					);
+					return setReload(prev => !prev);
 				} else {
 					toast.error("Couldn't complete payment");
 				}
@@ -168,7 +169,7 @@ function Settings() {
 						<div>
 							{plan === 'basic' && (
 								<PaystackButton
-									className="btn px-4 py-1 text-sm rounded-md text-white bg-[#c02dc1]"
+									className="btn px-4 py-3 text-sm rounded-md text-white bg-[#c02dc1] mt-2"
 									{...componentProps}
 								/>
 							)}

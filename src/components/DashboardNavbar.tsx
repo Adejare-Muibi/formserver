@@ -90,7 +90,7 @@ const DashboardNavbar = () => {
 					></div>
 				)}
 				<nav className="flex justify-between items-center gap-x-48 py-5 lg:py-10 px-5 max-w-7xl m-auto">
-					<div className="">
+					<div className="cursor-pointer" onClick={() => router.push('/')}>
 						<Image
 							src={'/formserver.jpg'}
 							height={80}
