@@ -4,6 +4,8 @@ import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
 import React, {FC, useContext, useEffect, useState} from 'react';
 import ScrollLock from './scroll-lock';
+import {verifyEmailLink} from '@/utils/apiCalls';
+import {toast} from 'react-toastify';
 
 interface NavLinkType {
 	label: string;
@@ -80,6 +82,25 @@ const DashboardNavbar = () => {
 		setIsLoading(false);
 	};
 
+	const handleVerify = async (
+		event: React.MouseEvent<HTMLElement, MouseEvent>
+	) => {
+		try {
+			const response = await verifyEmailLink();
+			const {status, data, message} = response;
+			if (status >= 400) throw new Error(message);
+			if (status === 200) {
+				toast.success('Verification link has been sent to your email');
+			} else {
+				throw new Error(response.message);
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return (
 		<>
 			<section className="shadow-md">
@@ -137,7 +158,10 @@ const DashboardNavbar = () => {
 			</section>
 
 			{!isVerified && (
-				<span className="text-center inline-block w-full px-5 py-2 bg-red-500 text-white cursor-text">
+				<span
+					className="text-center inline-block w-full px-5 py-2 bg-red-500 text-white cursor-pointer"
+					onClick={handleVerify}
+				>
 					You need to verify your email to create a form, verify now
 				</span>
 			)}

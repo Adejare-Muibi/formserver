@@ -54,7 +54,10 @@ const Reset = ({params}: {params: {token: string}}) => {
 		);
 	}
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (
+		event: React.MouseEvent<HTMLElement, MouseEvent>
+	) => {
+		event.preventDefault();
 		try {
 			if (formData.password !== formData.confirmPassword)
 				return setErrorMessage("Passwords doesn't match");
