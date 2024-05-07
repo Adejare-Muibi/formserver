@@ -24,17 +24,17 @@ const Hero = () => {
 	};
 
 	return (
-		<div className="flex w-full flex-col justify-center items-center py-10 gap-12 max-md:sticky">
+		<div className="flex w-full flex-col justify-center items-center py-10 gap-12 z-0">
 			<div className="flex flex-col items-center gap-4">
 				<h1 className="text-[50px] font-bold max-md:text-center max-md:text-[39px] max-md:w-[80vw]">
 					Easy Form Endpoints for any developer
 				</h1>
 				<p className="text-center text-[20px] max-md:w-[80vw] w-[60vw]">
-					Connect your Form to our form Endpoints and we we&apos;ll email you
-					the submissions. No PHP, Javascript or any backend code required.
+					Connect your Form to our form Endpoints and we we'll email you the
+					submissions. No PHP, Javascript or any backend code required.
 				</p>
 				<Link
-					href={isLoggedIn ? '/dashboard' : '/register'}
+					href={'/register'}
 					className="px-7 py-4 bg-[#c02dc1] text-white border-none rounded-[5px] "
 				>
 					Get Started

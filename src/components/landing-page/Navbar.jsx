@@ -17,7 +17,7 @@ const ResourcesProps = ({paragraph, text, icon, style, tag}) => {
 			</div>
 			<div className="flex items-start flex-col gap-1">
 				<h2>{text}</h2>
-				<p className=" opacity-50 text-sm">{paragraph}</p>
+				<p className="text-left opacity-50 text-sm">{paragraph}</p>
 			</div>
 		</div>
 	);
