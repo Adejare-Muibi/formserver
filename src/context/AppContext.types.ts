@@ -8,6 +8,7 @@ export interface AppContextProps {
 	forms: Form[];
 	setForms: Dispatch<SetStateAction<Form[]>>;
 	contact: Contact[];
+	setContact: Dispatch<SetStateAction<Contact[]>>;
 	reload: boolean;
 	setReload: Dispatch<SetStateAction<boolean>>;
 	isLoading: boolean;

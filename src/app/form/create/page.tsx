@@ -19,10 +19,11 @@ const CreateForm = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
-		setIsLoading(true);
 		if (!formData.form_name || !formData.project_name) {
 			return toast.error('Please provide all required fields');
 		}
+		setIsLoading(true);
+
 		if (!formData.form_email) {
 			formData.form_email = user.email;
 		}

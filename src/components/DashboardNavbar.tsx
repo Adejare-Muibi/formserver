@@ -2,15 +2,29 @@ import {AppContext} from '@/context/AppContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import {usePathname, useRouter} from 'next/navigation';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {FC, useContext, useEffect, useState} from 'react';
+import ScrollLock from './scroll-lock';
+import {verifyEmailLink} from '@/utils/apiCalls';
+import {toast} from 'react-toastify';
+
+interface NavLinkType {
+	label: string;
+	url: string;
+	isDropdown: boolean;
+	dropdown?: {
+		label: string;
+		url: string;
+	}[];
+}
 
 const DashboardNavbar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
-	const {setIsLoggedIn, setIsLoading, user} = useContext(AppContext);
+	const {setIsLoggedIn, setIsLoading, user, setUser, setForms, setContact} =
+		useContext(AppContext);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
-	const navLinks = [
+	const navLinks: NavLinkType[] = [
 		{
 			label: 'Dashboard',
 			url: '/dashboard',
@@ -56,7 +70,35 @@ const DashboardNavbar = () => {
 		router.push('/login');
 		localStorage.removeItem('_tkn');
 		setIsLoggedIn(false);
+		setUser({
+			first_name: '',
+			last_name: '',
+			email: '',
+			isVerified: true,
+			plan: 'basic',
+		});
+		setForms([]);
+		setContact([]);
 		setIsLoading(false);
+	};
+
+	const handleVerify = async (
+		event: React.MouseEvent<HTMLElement, MouseEvent>
+	) => {
+		try {
+			const response = await verifyEmailLink();
+			const {status, data, message} = response;
+			if (status >= 400) throw new Error(message);
+			if (status === 200) {
+				toast.success('Verification link has been sent to your email');
+			} else {
+				throw new Error(response.message);
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -68,8 +110,8 @@ const DashboardNavbar = () => {
 						onClick={() => setShowMobileNav(false)}
 					></div>
 				)}
-				<nav className="flex justify-between items-center gap-x-48 py-10 px-5 max-w-7xl m-auto">
-					<div className="">
+				<nav className="flex justify-between items-center gap-x-48 py-5 lg:py-10 px-5 max-w-7xl m-auto">
+					<div className="cursor-pointer" onClick={() => router.push('/')}>
 						<Image
 							src={'/formserver.jpg'}
 							height={80}
@@ -116,17 +158,22 @@ const DashboardNavbar = () => {
 			</section>
 
 			{!isVerified && (
-				<span className="text-center inline-block w-full px-5 py-2 bg-red-500 text-white cursor-text">
+				<span
+					className="text-center inline-block w-full px-5 py-2 bg-red-500 text-white cursor-pointer"
+					onClick={handleVerify}
+				>
 					You need to verify your email to create a form, verify now
 				</span>
 			)}
+
+			<ScrollLock enabled={showMobileNav} />
 		</>
 	);
 };
 
 export default DashboardNavbar;
 
-const NavLink = ({navLink}) => {
+const NavLink: FC<{navLink: NavLinkType}> = ({navLink}) => {
 	const pathname = usePathname();
 	const [isExpanded, setIsExpanded] = useState(false);
 
@@ -158,7 +205,7 @@ const NavLink = ({navLink}) => {
 							{navLink.label} <i className="fas fa-chevron-up"></i>
 						</span>
 						<ul className="ml-5 lg:-ml-5 mt-3 lg:mt-8 flex flex-col gap-y-3 lg:absolute lg:bg-white lg:px-10 lg:py-2 lg:shadow-md">
-							{navLink.dropdown.map(drop => (
+							{navLink?.dropdown?.map(drop => (
 								<li key={drop.label}>
 									<Link
 										href={drop.url}

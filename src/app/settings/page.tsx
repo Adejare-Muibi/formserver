@@ -1,11 +1,22 @@
 'use client';
 import {AppContext} from '@/context/AppContext';
-import {updatePassword} from '@/utils/apiCalls';
+import {updatePassword, upgradePlan} from '@/utils/apiCalls';
 import React, {useContext, useState} from 'react';
+import {PaystackButton} from 'react-paystack';
 import {toast} from 'react-toastify';
 
+interface TransactionInfo {
+	message: string;
+	redirecturl: string;
+	reference: string;
+	status: string;
+	trans: string;
+	transaction: string;
+	trxref: string;
+}
+
 function Settings() {
-	const {setIsLoading, user} = useContext(AppContext);
+	const {setIsLoading, setReload, user} = useContext(AppContext);
 	const {plan} = user;
 	const [formData, setFormData] = useState({
 		old: '',
@@ -39,6 +50,44 @@ function Settings() {
 		}
 	};
 
+	const onSuccess = async (paystackResponse: TransactionInfo) => {
+		try {
+			if (paystackResponse.status === 'success') {
+				setIsLoading(true);
+				const response = await upgradePlan({
+					reference: paystackResponse.reference,
+				});
+				if (response.status === 200) {
+					toast.success(
+						'Account upgrade completed. Enjoy unlimited submissions'
+					);
+					return setReload(prev => !prev);
+				} else {
+					toast.error("Couldn't complete payment");
+				}
+			} else {
+				throw new Error("Couldn't complete payment");
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	const componentProps = {
+		email: user.email,
+		amount: 100000,
+		metadata: {
+			name: user.first_name,
+			custom_fields: [],
+		},
+		publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
+		text: 'Upgrade Plan',
+		onSuccess: (res: any) => onSuccess(res),
+		onClose: () => toast.error("Couldn't complete payment"),
+	};
+
 	return (
 		<div className="flex flex-col px-9 gap-[50px] max-sm:gap-[20px]  max-sm:mb-[150px] mt-[30px] max-sm:mt-[50px] text-2xl  mb-4">
 			<h1>Settings</h1>
@@ -52,7 +101,7 @@ function Settings() {
 							Old Password
 						</label>
 						<input
-							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-8 "
+							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-4 "
 							type="text"
 							placeholder=""
 							value={formData.old}
@@ -71,7 +120,7 @@ function Settings() {
 							New Password
 						</label>
 						<input
-							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-8 "
+							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-4 "
 							type="text"
 							placeholder=""
 							value={formData.password}
@@ -90,7 +139,7 @@ function Settings() {
 							Confirm New Password
 						</label>
 						<input
-							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-8 "
+							className="inp bg-[rgb(243,244,246)] rounded w-full focus:outline-[#9CA3AF] p-2 px-4 "
 							type="text"
 							placeholder=""
 							value={formData.confirm}
@@ -119,9 +168,10 @@ function Settings() {
 						<h2 className="capitalize">{plan} plan</h2>
 						<div>
 							{plan === 'basic' && (
-								<button className="btn px-4 py-1 text-sm rounded-md text-white bg-[#c02dc1]">
-									Upgrade plan
-								</button>
+								<PaystackButton
+									className="btn px-4 py-3 text-sm rounded-md text-white bg-[#c02dc1] mt-2"
+									{...componentProps}
+								/>
 							)}
 						</div>
 					</div>

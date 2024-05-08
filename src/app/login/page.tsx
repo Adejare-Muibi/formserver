@@ -10,6 +10,9 @@ const Login = () => {
 	const router = useRouter();
 	const {setIsLoggedIn, setUser, setForms, setIsLoading} =
 		useContext(AppContext);
+	const [isPasswordVisible, setIsPasswordVisible] = useState({
+		password: false,
+	});
 
 	const [formData, setFormData] = useState({
 		email: '',
@@ -68,7 +71,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="w-full h-screen flex items-center justify-center">
+		<div className="w-full h-screen flex items-center justify-center max-w-[90%] m-auto">
 			<div className="w-full max-w-[500px]">
 				<h1 className="font-[800] text-3xl">Sign in</h1>
 				<div className="flex items-center mt-2 gap-1">
@@ -93,25 +96,40 @@ const Login = () => {
 					</div>
 					<div className="mb-4 relative">
 						<label htmlFor="">Password</label>
-						<input
-							type="password"
-							className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
-							onChange={event => {
-								setFormData(prev => {
-									return {...prev, password: event.target.value};
-								});
-							}}
-						/>
+						<div className="relative flex justify-center items-center">
+							<input
+								type={isPasswordVisible.password ? 'text' : 'password'}
+								className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
+								onChange={event => {
+									setFormData(prev => {
+										return {...prev, password: event.target.value};
+									});
+								}}
+							/>
+							<i
+								className={`fas ${
+									isPasswordVisible.password ? 'fa-eye-slash' : 'fa-eye'
+								} text-[#c02dc1] absolute right-4 cursor-pointer`}
+								onClick={() =>
+									setIsPasswordVisible(prev => {
+										return {
+											...prev,
+											password: !prev.password,
+										};
+									})
+								}
+							></i>
+						</div>
 					</div>
 					<div className="mb-4 relative">
 						<button
-							className="bg-[#c02dc1] text-white rounded w-full p-2"
+							className="bg-[#c02dc1] text-white rounded w-full p-3"
 							onClick={handleLogin}
 						>
 							Sign In
 						</button>
 					</div>
-					<Link className="text-[#c02dc1]" href={'/'}>
+					<Link className="text-[#c02dc1]" href={'/forget-password'}>
 						Forgot your password?
 					</Link>
 				</form>
@@ -134,15 +152,15 @@ const Login = () => {
 					</span>
 					<div className="text-sm">
 						<span>Please check out our</span>{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/help'}>
 							Help Site
 						</Link>
 						,{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/terms'}>
 							Terms of Use
 						</Link>
 						, <span>and</span>{' '}
-						<Link className="text-[#c02dc1]" href={'/'}>
+						<Link className="text-[#c02dc1]" href={'/privacy-policy'}>
 							Privacy Policy
 						</Link>
 						.

@@ -37,7 +37,7 @@ const Build = () => {
               </div>
               <div className='flex flex-col gap-[6px] max-md:items-center'>
                 <h1 className='text-[#0E232D] text-[20px] font-semibold'>Simple HTML forms</h1>
-                <p className='w-[26vw] max-md:w-[75vw] max-md:text-center'>Just set your form's <span className='bg-[#FDE6E9] text-[#c02dc1] py-[3px] px-[7px]'>action</span> to our endpoint. No server code requi#c02dc1.</p>
+                <p className='w-[26vw] max-md:w-[75vw] max-md:text-center'>Just set your form&apos;s <span className='bg-[#FDE6E9] text-[#c02dc1] py-[3px] px-[7px]'>action</span> to our endpoint. No server code requi#c02dc1.</p>
               </div>
             </div>
             <div className='flex items-center gap-[7px]'>

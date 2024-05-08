@@ -25,7 +25,7 @@ const Contact = () => {
 					<span>No user has used your form yet</span>
 					<button
 						className="border-2 border-[#c02dc1] rounded-md shadow-md p-3 bg-[#c02dc1] text-white"
-						onClick={() => router.push('/forms/manage')}
+						onClick={() => router.push('/form/manage')}
 					>
 						Go to forms
 					</button>
