@@ -32,8 +32,7 @@ body {
   }
 } */
 
-
-.create{
-  background: url("/back.jpg");
-  /* background: #000 */
+.create {
+	background-image: url('/back.jpg');
+	/* background: #000 */
 }

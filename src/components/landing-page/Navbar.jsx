@@ -85,17 +85,15 @@ const Navbar = () => {
 								className="font-[600] relative flex items-center gap-1 text-[18px] hover:text-[#C02DC1]"
 							>
 								Resources{' '}
-								<span className="w-0">
-									{isOpen ? <BiChevronUp /> : <BiChevronDown />}
-								</span>
-								<div
-									className={`absolute max-md:flex-col max-md:w-[80%] transition-transform duration-300 top-10 ${
-										isOpen
-											? ' opacity-100 translate-y-0 h-fit w-[500px]'
-											: ' translate-y-[100px] h-0 w-0 opacity-0 overflow-hidden'
-									} bg-white flex gap-3 shadow-md rounded-xl`}
-								>
-									{isOpen && (
+								<span>{isOpen ? <BiChevronUp /> : <BiChevronDown />}</span>
+								{isOpen && (
+									<div
+										className={`absolute max-md:flex-col max-md:w-[80%] transition-all duration-300 top-10 ${
+											isOpen
+												? ' opacity-100 translate-y-0'
+												: ' translate-y-[100px] opacity-0 overflow-hidden'
+										} bg-white flex gap-3 shadow-md rounded-xl w-[500px]  h-fit`}
+									>
 										<div className="flex p-5 gap-4 flex-col w-1/2 max-md:w-[100%]">
 											<Link href={'/library-details'}>
 												<ResourcesProps
@@ -105,7 +103,9 @@ const Navbar = () => {
 													tag={'/library-details'}
 													text={'Library'}
 													style={'hover:bg-[#F9FAFB]'}
-													paragraph={'hello world'}
+													paragraph={
+														'A collection of example Html forms, on how to use a form'
+													}
 												/>
 											</Link>
 											<ResourcesProps
@@ -114,21 +114,21 @@ const Navbar = () => {
 												}
 												text={'Guide'}
 												style={'hover:bg-[#F9FAFB]'}
-												paragraph={'hello world'}
+												paragraph={'On how to use each form endpoints'}
 											/>
 										</div>
-									)}
-									<div className="bg-[#F9FAFB] p-5 w-1/2 max-md:w-[100%]">
-										<ResourcesProps
-											icon={
-												<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
-											}
-											text={'Changelog'}
-											style={'bg-[#F9FAFB] hover:bg-[white]'}
-											paragraph={'hello world'}
-										/>
+										<div className="bg-[#F9FAFB] p-5 w-1/2 max-md:w-[100%]">
+											<ResourcesProps
+												icon={
+													<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
+												}
+												text={'Announcement'}
+												style={'bg-[#F9FAFB] hover:bg-[white]'}
+												paragraph={'Get Update on Our latest news and services'}
+											/>
+										</div>
 									</div>
-								</div>
+								)}
 							</button>
 							<Link
 								className="font-[600] text-[18px] hover:text-[#C02DC1]"

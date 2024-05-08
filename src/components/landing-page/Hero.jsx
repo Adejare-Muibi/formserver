@@ -34,7 +34,7 @@ const Hero = () => {
 					the submissions. No PHP, Javascript or any backend code required.
 				</p>
 				<Link
-					href={'/register'}
+					href={isLoggedIn ? '/dashboard' : '/register'}
 					className="px-7 py-4 bg-[#c02dc1] text-white border-none rounded-[5px] "
 				>
 					Get Started
