@@ -8,7 +8,7 @@ import {vscDarkPlus} from 'react-syntax-highlighter/dist/esm/styles/prism';
 const Hero = () => {
 	const {isLoggedIn} = useContext(AppContext);
 	const [isCopy, setIsCopy] = useState(false);
-	const codeString = `<form action="https://formserver.io/f/{form_id}" method="post">
+	const codeString = `<form action="${process.env.NEXT_PUBLIC_SERVER_URL}/submit-form/{form_id}" method="post">
     < label for= "email" > Your Email</label >
       <input name="Email" id="email" type="email">
         <button type="submit">Submit</button>
@@ -30,8 +30,8 @@ const Hero = () => {
 					Easy Form Endpoints for any developer
 				</h1>
 				<p className="text-center text-[20px] max-md:w-[80vw] w-[60vw]">
-					Connect your Form to our form Endpoints and we we'll email you the
-					submissions. No PHP, Javascript or any backend code required.
+					Connect your Form to our form Endpoints and we we&apos;ll email you
+					the submissions. No PHP, Javascript or any backend code required.
 				</p>
 				<Link
 					href={'/register'}

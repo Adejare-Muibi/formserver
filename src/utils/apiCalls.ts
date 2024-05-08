@@ -252,3 +252,20 @@ export const upgradePlan = async (payload: {reference: string}) => {
 		return {status: 400, message: err};
 	}
 };
+
+export const verifyEmailLink = async () => {
+	try {
+		const token = localStorage.getItem('_tkn');
+		const response = await axios.get(`${SERVER_URL}/user/verify`, {
+			headers: {Authorization: `Bearer ${token}`},
+		});
+		return {status: response.status, data: response.data};
+	} catch (error: any) {
+		const err =
+			error.response?.data?.message ||
+			error.response?.data?.error ||
+			error.message;
+		console.log('error', err);
+		return {status: 400, message: err};
+	}
+};
