@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<div className="bg-[#0E232D] text-[#717D83] flex justify-between max-md:justify-center max-md:items-center p-[35px] font-semibold max-md:flex-col-reverse max-md:gap-[20px]">
+		<div className="bg-[#0E232D] text-[#717D83] flex justify-between max-md:justify-center max-md:items-center p-[35px] overflow-hidden font-semibold max-md:flex-col-reverse max-md:gap-[20px] max-w-screen">
 			<div>
 				<h1>&copy;2024 formserver.Inc</h1>
 			</div>

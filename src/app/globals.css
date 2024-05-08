@@ -33,6 +33,5 @@ body {
 } */
 
 .create {
-	background-image: url('/back.jpg');
-	/* background: #000 */
+	background: url('/back.jpg');
 }
