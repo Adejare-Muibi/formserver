@@ -37,3 +37,6 @@ body {
   background: url("/back.jpg");
   /* background: #000 */
 }
+ol, li{
+  list-style: circle;
+}

@@ -78,7 +78,7 @@ const How = () => {
 							</div>
 							<div>
 								<h1 className="font-bold text-[20px] max-md:text-[18px] max-md:w-[55vw]">
-									Submissions are saved to the Formspree Inbox
+									Submissions are saved to the Formserver Inbox
 								</h1>
 								<p className="max-md:w-[60vw]">
 									View submissions, see daily analytics reports, and export to
