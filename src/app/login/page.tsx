@@ -10,6 +10,9 @@ const Login = () => {
 	const router = useRouter();
 	const {setIsLoggedIn, setUser, setForms, setIsLoading} =
 		useContext(AppContext);
+	const [isPasswordVisible, setIsPasswordVisible] = useState({
+		password: false,
+	});
 
 	const [formData, setFormData] = useState({
 		email: '',
@@ -93,15 +96,30 @@ const Login = () => {
 					</div>
 					<div className="mb-4 relative">
 						<label htmlFor="">Password</label>
-						<input
-							type="password"
-							className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
-							onChange={event => {
-								setFormData(prev => {
-									return {...prev, password: event.target.value};
-								});
-							}}
-						/>
+						<div className="relative flex justify-center items-center">
+							<input
+								type={isPasswordVisible.password ? 'text' : 'password'}
+								className="p-2 bg-[#F3F4F6] rounded w-full focus:outline-[#9CA3AF]"
+								onChange={event => {
+									setFormData(prev => {
+										return {...prev, password: event.target.value};
+									});
+								}}
+							/>
+							<i
+								className={`fas ${
+									isPasswordVisible.password ? 'fa-eye-slash' : 'fa-eye'
+								} text-[#c02dc1] absolute right-4 cursor-pointer`}
+								onClick={() =>
+									setIsPasswordVisible(prev => {
+										return {
+											...prev,
+											password: !prev.password,
+										};
+									})
+								}
+							></i>
+						</div>
 					</div>
 					<div className="mb-4 relative">
 						<button

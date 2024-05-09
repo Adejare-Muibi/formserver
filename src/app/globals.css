@@ -32,11 +32,10 @@ body {
   }
 } */
 
-
-.create{
-  background: url("/back.jpg");
-  /* background: #000 */
+.create {
+	background: url('/back.jpg');
 }
+
 ol, li{
   list-style: circle;
 }

@@ -5,10 +5,11 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {FaLongArrowAltRight} from 'react-icons/fa';
 import {vscDarkPlus} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-function Docs() {
+function Docs({params}: {params: {id: string}}) {
+	const formID = params.id;
 	const [isCopy, setIsCopy] = useState(false);
 	const codeString = `<form 
-    action="https://formserver.io/"
+    action="${process.env.NEXT_PUBLIC_SERVER_URL}/submit-form/${formID}"
     method="POST"
     >
     <label>
@@ -27,6 +28,7 @@ function Docs() {
         Message:
         <textarea name="message" id="" required></textarea>
     </label>
+	<button type="submit">Submit</button>
 </form>`;
 
 	const handleCopyCode = () => {
@@ -38,7 +40,7 @@ function Docs() {
 		}, 2000);
 	};
 	const [CopyText, setCopyText] = useState(false);
-	const codString = `Https://formserver.io`;
+	const codString = `${process.env.NEXT_PUBLIC_SERVER_URL}/submit-form/${formID}`;
 
 	function copyCode() {
 		navigator.clipboard.writeText(codString);
@@ -52,7 +54,7 @@ function Docs() {
 		<div className="flex flex-col justify-center gap-12  py-10 items-center">
 			<div className="gap-10 flex flex-col max-md:items-center">
 				<div className="flex flex-col gap-5 max-md:items-center">
-					<h1 className="text-[27px] font-bold">contact form</h1>
+					<h1 className="text-[27px] font-bold">Contact form</h1>
 					<div className="flex gap-3 max-md:flex-col max-md:items-center">
 						<Link href={'/'}>Integration</Link>
 						<Link href={'/'}>Submissions</Link>
