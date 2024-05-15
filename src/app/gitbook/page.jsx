@@ -36,7 +36,7 @@ const page = () => {
                 </div>
                 <div className='flex flex-col gap-[22px]'>
                     <p className='w-[50vw] text-[18px] max-md:w-[80vw]'>Within your Formspree account click the button labelled <span className='font-bold '>New Project</span> and name your new dashboard project. Projects let you group forms together if say you were using multiple forms on a single website for example. After naming your project click <span className='font-bold '>Create Project</span>.</p>
-                    <Image src={'/gitdoc.jpeg'} width={650} height={100} className='max-md:w-[80vw]'/>
+                    {/* <Image src={'/gitdoc.jpeg'} width={650} height={100} className='max-md:w-[80vw]'/> */}
                 </div>
                 <div className='flex flex-col gap-[22px]'>
                     <p className='w-[50vw] text-[18px] max-md:w-[80vw]'>Next create a new form with the <span className='font-bold'>New Form</span> button, call it <span className='font-bold'>Contact Form</span> and update the recipient email to the email you wish to receive your form submissions in. Then click  <span className='font-bold'>Create Form</span>.</p>
@@ -55,8 +55,8 @@ const page = () => {
                     <Image src={'/gittrouble.webp'} width={650} height={100} className='max-md:w-[80vw] border-b-2 pb-[40px]'/>
                 </div>
             </div>
-            <div className='flex flex-col gap-[30px]'>
-               <h1>You&apos;ve got a Feedback?</h1>
+            <div className='flex'>
+               <h1 className='text-[25px] w-[50vw]'>You&apos;ve got a Feedback? Get back to us <span className='text-[#c02dc1] font-bold underline decoration-1'><Link href={'/help'}>here</Link></span></h1>
             </div>
         </div>
     </div>

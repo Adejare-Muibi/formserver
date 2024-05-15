@@ -13,7 +13,7 @@ const page = () => {
                 <h1 className='text-[60px] font-bold'>+</h1>
             </div>
             <div>
-                <Image src={'/formserver.jpg'} className="max-md:w-[29vw]" height={130} width={130} alt="log" priority/>
+                <Image src={'/formserver.jpg'} className="max-md:w-[29vw]" height={130} width={130} alt="loggg" priority/>
             </div>
         </div>
         <div className='flex justify-center items-center flex-col gap-[30px]'>

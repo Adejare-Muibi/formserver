@@ -35,7 +35,7 @@ const page = () => {
                     <div className='bg-[black] h-[30vh] shadow w-[23vw] max-md:w-[80vw] flex items-center justify-center rounded-[20px]'>
                         <Image src={'/11ty.svg'} height={10} width={100}/>
                     </div>
-                    <Link href={'/'} className='text-[19px] text-[#c02dc1]'>HTML Forms with Eleventy (11ty)</Link>
+                    <Link href={'/11tyHtml'} className='text-[19px] text-[#c02dc1]'>HTML Forms with Eleventy (11ty)</Link>
                 </div>
                 <div className='flex flex-col gap-3 max-md:items-center'>
                     <div className='bg-[black] shadow h-[30vh] w-[23vw] max-md:w-[80vw] flex items-center justify-center rounded-[20px]'>
