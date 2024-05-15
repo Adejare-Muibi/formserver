@@ -63,7 +63,7 @@ const Register = () => {
 			<div className="w-full max-w-[500px] max-md:w-[100%] flex flex-col max-mditems-center py-10">
 				<h2></h2>
 				<h1 className="font-[800] max-md:text-[25px] max-md: text-3xl mb-5">
-					Register for Formspree
+					Register for Form server
 				</h1>
 				<form className="w-full flex flex-col gap-2 mt-5 max-md:">
 					<div className="flex gap-[40px] max-md:flex-col max-md:gap-[4px]">
@@ -208,7 +208,7 @@ const Register = () => {
 							className="max-md:mt-[3px]"
 						/>
 						<label htmlFor="update" className="max-md:w-[70vw]">
-							<h4>Please send me occasional Formspree news updates</h4>
+							<h4>Please send me occasional Form server news updates</h4>
 						</label>
 					</div>
 					<div className="flex flex-col gap-[7px] max-md: max-md:gap-[7px]">
