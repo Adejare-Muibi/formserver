@@ -62,7 +62,7 @@ const Build = () => {
           </div>
         </div>
       </div>
-      <div className='flex items-center justify-center bg-[#0E232D] gap-[10%] mx-[60px] py-[58px] max-md:gap-[30px] max-md:flex-col-reverse max-md:py-[25px] max-md:mx-[0px] px-[25px] rounded-[30px] max-md:justify-center max-md:w-full max-md:rounded-[0px]'>
+      <div className='flex items-center justify-center bg-[#0E232D] gap-[10%] mx-[45px] py-[58px] max-md:gap-[30px] max-md:flex-col-reverse max-md:py-[25px] max-md:mx-[0px] px-[25px] rounded-[30px] max-md:justify-center max-md:w-full max-md:rounded-[0px]'>
         <div className='flex justify-around w-full max-md:justify-center'>
           <div className='flex flex-col gap-[40px]'>
             <Image className='' src={"/pga.webp"} height={120} width={150} alt="pga" priority/>

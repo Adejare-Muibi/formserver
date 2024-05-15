@@ -108,14 +108,16 @@ const Navbar = () => {
 													}
 												/>
 											</Link>
-											<ResourcesProps
-												icon={
-													<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
-												}
-												text={'Guide'}
-												style={'hover:bg-[#F9FAFB]'}
-												paragraph={'On how to use each form endpoints'}
-											/>
+											<Link href={'/guide'}>
+												<ResourcesProps
+													icon={
+														<LuBookOpen className="bg-[#c12dc0!important] p-2 text-4xl  text-white rounded" />
+													}
+													text={'Guide'}
+													style={'hover:bg-[#F9FAFB]'}
+													paragraph={'On how to use each form endpoints'}
+												/>
+											</Link>
 										</div>
 										<div className="bg-[#F9FAFB] p-5 w-1/2 max-md:w-[100%]">
 											<ResourcesProps

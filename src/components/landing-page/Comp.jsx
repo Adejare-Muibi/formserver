@@ -32,15 +32,15 @@ const Comp = () => {
       <div className='flex gap-[160px] max-md:gap-[40px]'>
         <div className='flex flex-col gap-[17px]'> 
           <div className='text-[#c02dc1] font-bold'>
-            <h1>USEFULL LINKS</h1>
+            <h1>USEFUL LINKS</h1>
           </div>
           <div className='flex flex-col gap-[12px]'>
             <Link href={"/"} className="hover:text-[#c02dc1]">Plans</Link>
             <Link href={"/"} className="hover:text-[#c02dc1]">Blog</Link>
             <Link href={"/"} className="hover:text-[#c02dc1]">Annoucement</Link>
             <Link href={"/"} className="hover:text-[#c02dc1]">API Documentation</Link>
-            <Link href={"/"} className="hover:text-[#c02dc1]">Terms of Service</Link>
-            <Link href={"/"} className="hover:text-[#c02dc1]">Privacy Policy</Link>
+            <Link href={"/terms-and-conditions"} className="hover:text-[#c02dc1]">Terms of Service</Link>
+            <Link href={"/privacy-policy"} className="hover:text-[#c02dc1]">Privacy Policy</Link>
           </div>
         </div>
         <div className='flex flex-col gap-[17px]'>

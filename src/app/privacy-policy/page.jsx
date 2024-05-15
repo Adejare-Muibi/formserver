@@ -4,7 +4,7 @@ import Link from 'next/link';
 const page = () => {
 	return (
 		<div className="flex flex-col gap-6 items-center my-[40px] w-[100%]">
-			<div className="flex flex-col gap-6">
+			<div className="flex flex-col gap-6 privacy">
 				<div className="flex flex-col gap-5 max-md:items-center">
 					<div className="flex flex-col gap-14 max-md:items-center">
 						<h1 className="text-[36px] font-bold">Privacy Policy</h1>
@@ -107,7 +107,7 @@ const page = () => {
 							<li className="max-md:w-[76vw]">
 								<span className="font-bold">Website</span> refers to formserver,
 								accessible from{' '}
-								<span className="text-[blue]">
+								<span className="text-[blue] underline decoration-1">
 									<Link href={'https:/formserver.io'}>
 										https://formserver.io
 									</Link>
@@ -140,7 +140,6 @@ const page = () => {
 								<li>Email address</li>
 								<li>First name and last name</li>
 								<li>Phone number</li>
-								<li>Address, State, Province, ZIP/Postal code, City</li>
 								<li>Usage Data</li>
 							</ul>
 						</div>
@@ -619,9 +618,9 @@ const page = () => {
 						<ul className="flex flex-col gap-7 ml-[45px]">
 							<li>
 								By visiting this page on our website:{' '}
-								<span className="text-[blue]">
+								<span className="text-[blue] underline decoration-1">
 									<Link href={'https:/formserver.io'}>
-										https://formserver.io
+										https://formserver.io/help
 									</Link>
 								</span>
 							</li>

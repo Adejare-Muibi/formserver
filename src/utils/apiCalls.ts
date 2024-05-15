@@ -21,6 +21,7 @@ export const registerUser = async (payload: Register) => {
 
 export const loginUser = async (payload: Login) => {
 	try {
+		console.log(SERVER_URL)
 		const response = await axios.post(`${SERVER_URL}/auth/signin`, payload);
 		return {status: response.status, data: response.data};
 	} catch (error: any) {

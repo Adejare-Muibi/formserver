@@ -25,8 +25,8 @@ const Login = () => {
 		try {
 			setIsLoading(true);
 			e.preventDefault();
-			if (!formData.email || !formData.password)
-				throw new Error('Please provide your username and password');
+			// if (!formData.email || !formData.password)
+			// 	throw new Error('Please provide your username and password');
 			const response = await loginUser(formData);
 			const {status, data, message} = response;
 

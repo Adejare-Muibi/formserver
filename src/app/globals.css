@@ -36,6 +36,9 @@ body {
 	background: url('/back.jpg');
 }
 
-ol, li{
+.privacy li{
+  list-style: circle;
+}
+.my li{
   list-style: circle;
 }
