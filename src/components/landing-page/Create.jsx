@@ -6,7 +6,7 @@ import {AppContext} from '@/context/AppContext';
 const Create = () => {
 	const {isLoggedIn} = useContext(AppContext);
 	return (
-		<div className="mx-[70px] create rounded-[30px] items-center flex flex-col gap-[45px] my-[30px] max-md:items-center max-md:w-full max-md:mx-0 max-md:rounded-[0] py-[85px] relative">
+		<div className="mx-[70px] create rounded-2xl overflow-hidden items-center flex flex-col gap-[45px] my-[30px] max-md:items-center max-md:w-full max-md:mx-0 py-[85px] relative">
 			<span className="bg-black opacity-80 absolute top-0 right-0 left-0 bottom-0"></span>
 			<div className="flex flex-col items-center z-10">
 				<h1 className="text-[35px] font-bold text-[white] max-md:text-[28px] max-md:w-[70vw] max-md:text-center">
