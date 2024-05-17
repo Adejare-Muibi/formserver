@@ -49,10 +49,7 @@ const Build = () => {
 								</h1>
 								<p className="w-[26vw] max-md:w-[75vw] max-md:text-center">
 									Just set your form&apos;s{' '}
-									<span className="bg-[#FDE6E9] text-[#c02dc1] py-[3px] px-[7px]">
-										action
-									</span>{' '}
-									to our endpoint. No server code requi#c02dc1.
+									<span className="bg-[#FDE6E9] text-[#c02dc1] py-[3px] px-[7px]">action</span>{' '}to our endpoint. No server code required.
 								</p>
 							</div>
 						</div>

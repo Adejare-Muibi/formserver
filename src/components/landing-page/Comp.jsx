@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaFacebook } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { IoLogoGithub } from "react-icons/io";
 
@@ -14,7 +14,7 @@ const Comp = () => {
           <h1 className='text-[20px] font-bold w-[13vw] max-md:hidden'>The form solution for any developer</h1>
         </div>
         <div className='flex gap-[10px] text-[#8D9396] max-md:hidden'>
-          <FaFacebook className='text-[26px]' />
+          <FaYoutube className='text-[26px]' />
           <FaTwitter className='text-[26px]'/>
           <IoLogoGithub className='text-[26px]'/>
         </div>
@@ -23,7 +23,7 @@ const Comp = () => {
             <h1 className='text-[#c02dc1] font-bold'>SOCIAL</h1>
           </div>
           <div className='flex gap-[10px] text-[#8D9396]'>
-            <FaFacebook className='text-[26px]' />
+            <FaYoutube className='text-[26px]' />
             <FaTwitter className='text-[26px]'/>
             <IoLogoGithub className='text-[26px]'/>
           </div>

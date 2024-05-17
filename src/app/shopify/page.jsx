@@ -124,43 +124,8 @@ const page = () => {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col gap-[30px] max-md:max-md:w-[80vw]">
-					<div className="flex flex-col">
-						<h1 className="font-bold text-[32px]">Got Feedback?</h1>
-					</div>
-					<form action="" className="flex flex-col gap-6 w-[50vw]">
-						<div className="flex flex-col gap-2 max-md:max-md:w-[80vw]">
-							<label htmlFor="Name">Name</label>
-							<input
-								type="text"
-								id="Name"
-								className="border h-[10vh] p-[6px] outline-[#e7bae7]"
-							/>
-						</div>
-						<div className="flex flex-col gap-2 max-md:max-md:w-[80vw]">
-							<label htmlFor="Email">Email</label>
-							<input
-								type="text"
-								id="Email"
-								className="border h-[10vh] p-[6px]"
-							/>
-						</div>
-						<div className="flex flex-col gap-2 max-md:max-md:w-[80vw]">
-							<label htmlFor="Message">Message</label>
-							<textarea
-								name=""
-								id="Message"
-								cols="2"
-								rows="5"
-								className="border p-[6px] outline-[#e7bae7]"
-							></textarea>
-						</div>
-						<div>
-							<button className="px-7 outline-[#e7bae7] py-3 bg-[#c02dc1] text-white border-none rounded-[5px] font-semibold">
-								Send
-							</button>
-						</div>
-					</form>
+				<div className="flex">
+					<h1 className='text-[25px] w-[50vw]'>You&apos;ve got a Feedback? Reach out to us <span className='text-[#c02dc1] font-bold underline decoration-1'><Link href={'/help'}>here</Link></span></h1>
 				</div>
 			</div>
 		</div>

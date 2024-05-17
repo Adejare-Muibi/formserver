@@ -47,7 +47,7 @@ const page = () => {
                     <div className='bg-[black] shadow h-[30vh] w-[23vw] max-md:w-[80vw] flex items-center justify-center rounded-[20px]'>
                         <Image src={'/nextjs.svg'} height={200} width={200}/>
                     </div>
-                    <Link href={'/'} className='text-[19px] text-[#c02dc1]'>React Forms with NextJS</Link>
+                    <Link href={'/next.js'} className='text-[19px] text-[#c02dc1]'>React Forms with NextJS</Link>
                 </div>   
             </div>
         </div>
