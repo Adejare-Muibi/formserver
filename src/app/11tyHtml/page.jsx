@@ -61,7 +61,7 @@ const page = () => {
                         </div>
                     </div>
                     <div className='flex flex-col gap-[15px]'>
-                        <h1 className='text-[18px] w-[50vw] max-md:w-[80vw]'>You can update your form by <span className="bg-[#FDE6E9] text-[#c02dc1] font-bold py-[3px] px-[7px]">editing</span> and <span className="bg-[#FDE6E9] text-[#c02dc1] font-bold py-[3px] px-[7px]">updating</span> your existing form(s) in settings</h1>
+                        <h1 className='text-[18px] w-[50vw] max-md:w-[80vw]'>You can update your form by <span className="bg-[#FDE6E9] text-[#c02dc1] font-bold py-[3px] px-[7px]">editing</span> and <span className="bg-[#FDE6E9] text-[#c02dc1] font-bold py-[3px] px-[7px]">deleting</span> your existing form(s) in settings</h1>
                         <Image src={'/settings.png'} width={600} height={100} className='shadow max-md:w-[70vw]'></Image>
                     </div>
                 </div> 

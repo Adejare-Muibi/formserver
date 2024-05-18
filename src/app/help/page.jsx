@@ -13,8 +13,7 @@ const Page = () => {
 				<div className="flex flex-col gap-[20px] text-[17px] max-md:text-[16px]">
 					<p className="w-[60vw] max-md:w-[87vw]">
 						Please feel free to reach out if you have any questions, we are 100%
-						responsive and reply instantly. Please send us an email at
-						formserver4u@gmail.com or you can fill out the form below. This page
+						responsive and reply instantly. Please send us an email at help@formserver.site or you can fill out the form below. This page
 						will also HELP you.
 					</p>
 				</div>
